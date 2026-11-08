@@ -1,0 +1,5 @@
+{
+  "module": ":unrelated",
+  "rule": "NAME001",
+  "expected": []
+}

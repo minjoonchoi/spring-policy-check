@@ -1,0 +1,12 @@
+{
+  "module": ":sample",
+  "rule": "JPA002",
+  "expected": [
+    {
+      "code": "PREFER_QUERY_ANNOTATION",
+      "status": "suggestion",
+      "severity": "warning",
+      "suggestion_contains": "@Query"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "module": ":sample",
+  "rule": "JPA001",
+  "expected": [
+    {
+      "code": "NULL_SEMANTICS",
+      "status": "skipped",
+      "severity": "info"
+    }
+  ]
+}

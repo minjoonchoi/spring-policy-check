@@ -1,0 +1,11 @@
+{
+  "module": ":sample",
+  "rule": "JPA003",
+  "expected": [
+    {
+      "code": "UNMAPPED_COLUMN",
+      "status": "skipped",
+      "severity": "info"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "module": ":sample",
+  "rule": "JPA001",
+  "expected": [
+    {
+      "code": "BULK_DML",
+      "status": "skipped",
+      "severity": "info"
+    }
+  ]
+}

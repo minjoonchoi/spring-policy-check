@@ -1,0 +1,11 @@
+{
+  "module": ":sample",
+  "rule": "JPA003",
+  "expected": [
+    {
+      "code": "UNSUPPORTED_OPERATOR",
+      "status": "skipped",
+      "severity": "info"
+    }
+  ]
+}

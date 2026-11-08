@@ -1,0 +1,36 @@
+{
+  "schema-version": 1,
+  "files": 3,
+  "applicable-rules": [
+    "AUTH001",
+    "JPA001",
+    "JPA002",
+    "JPA003"
+  ],
+  "diagnostics": [
+    {
+      "rule": "JPA002",
+      "status": "suggestion",
+      "severity": "warning",
+      "code": "PREFER_QUERY_ANNOTATION",
+      "file": "samples/warnings/Reader.kt",
+      "line": 6,
+      "column": 9,
+      "evidence": "em.createQuery(\"select u from User u where u.email = :email\", User::class.java)",
+      "message": "EntityManager 문자열 JPQL 구현을 분석했습니다.",
+      "suggestion": "Repository의 애너테이션 기반 구현을 검토하세요. 후보: @Query(\"select u from User u where u.email = :email\") — 파라미터·반환 타입·트랜잭션 경계를 보존하세요"
+    },
+    {
+      "rule": "JPA001",
+      "status": "suggestion",
+      "severity": "warning",
+      "code": "PREFER_DERIVED",
+      "file": "samples/warnings/UserRepository.kt",
+      "line": 6,
+      "column": 2,
+      "evidence": "@Query(\"select u from User u where u.email = :email\")",
+      "message": "지원하는 단순 JPQL 조회 패턴에 해당합니다.",
+      "suggestion": "파생 쿼리 메서드 사용을 검토하세요. 후보: fun findByEmail(email: String): List<User>"
+    }
+  ]
+}

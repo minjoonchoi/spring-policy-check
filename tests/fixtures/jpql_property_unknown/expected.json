@@ -1,0 +1,11 @@
+{
+  "module": ":sample",
+  "rule": "JPA001",
+  "expected": [
+    {
+      "code": "UNKNOWN_PROPERTY",
+      "status": "skipped",
+      "severity": "info"
+    }
+  ]
+}

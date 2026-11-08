@@ -1,0 +1,11 @@
+{
+  "module": ":sample",
+  "rule": "AUTH001",
+  "expected": [
+    {
+      "code": "UNRESOLVED_RECEIVER",
+      "status": "skipped",
+      "severity": "info"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "schema-version": 1,
+  "files": 4,
+  "applicable-rules": [
+    "NAME001",
+    "AUTH001",
+    "JPA001",
+    "JPA002",
+    "JPA003"
+  ],
+  "diagnostics": [
+    {
+      "rule": "AUTH001",
+      "status": "violation",
+      "severity": "error",
+      "code": "AUTH_OUTSIDE_BOUNDARY",
+      "file": "samples/violations/AuthHandler.kt",
+      "line": 3,
+      "column": 56,
+      "evidence": "request.getHeader(\"Authorization\")",
+      "message": "인증 토큰 처리가 허용된 Security 구성요소 밖에 있습니다.",
+      "suggestion": "Security Filter/Resolver/Provider 경로에서 공통 처리하고 업무 코드에는 검증된 인증정보를 전달하세요."
+    },
+    {
+      "rule": "NAME001",
+      "status": "violation",
+      "severity": "error",
+      "code": "NAME_MISMATCH",
+      "file": "samples/violations/UserHandler.kt",
+      "line": 2,
+      "column": 7,
+      "evidence": "UserHandler",
+      "message": "Controller 패키지의 일반 클래스 이름 규칙 위반",
+      "suggestion": "*Controller suffix를 사용하세요."
+    },
+    {
+      "rule": "JPA001",
+      "status": "suggestion",
+      "severity": "warning",
+      "code": "PREFER_DERIVED",
+      "file": "samples/violations/UserRepository.kt",
+      "line": 6,
+      "column": 2,
+      "evidence": "@Query(\"select u from User u where u.email = :email\")",
+      "message": "지원하는 단순 JPQL 조회 패턴에 해당합니다.",
+      "suggestion": "파생 쿼리 메서드 사용을 검토하세요. 후보: fun findByEmail(email: String): List<User>"
+    }
+  ]
+}

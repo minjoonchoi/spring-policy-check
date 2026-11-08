@@ -1,0 +1,11 @@
+{
+  "module": ":sample",
+  "rule": "JPA001",
+  "expected": [
+    {
+      "code": "REUSED_PARAMETER",
+      "status": "skipped",
+      "severity": "info"
+    }
+  ]
+}

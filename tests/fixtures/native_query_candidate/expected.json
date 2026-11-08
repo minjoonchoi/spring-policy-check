@@ -1,0 +1,12 @@
+{
+  "module": ":sample",
+  "rule": "JPA003",
+  "expected": [
+    {
+      "code": "PREFER_JPA_REVIEW",
+      "status": "suggestion",
+      "severity": "info",
+      "suggestion_contains": "select u from User u where u.email = :email"
+    }
+  ]
+}

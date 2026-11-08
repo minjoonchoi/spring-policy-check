@@ -1,0 +1,11 @@
+{
+  "module": ":sample",
+  "rule": "JPA001",
+  "expected": [
+    {
+      "code": "QUERY_OPTIONS",
+      "status": "skipped",
+      "severity": "info"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "module": ":sample",
+  "rule": "CQ001",
+  "expected": [
+    {
+      "code": "NAME_MISMATCH",
+      "status": "violation",
+      "severity": "error",
+      "suggestion_contains": "CommandService"
+    }
+  ]
+}

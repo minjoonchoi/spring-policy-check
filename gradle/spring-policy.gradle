@@ -1,0 +1,18 @@
+// Apply this script from an existing Spring subproject after placing a built binary.
+def binary = rootProject.layout.projectDirectory.file('tools/spring-policy').asFile
+def policy = rootProject.layout.projectDirectory.file('policy.yml').asFile
+def kotlinRoots = files('src/main/kotlin').filter { it.exists() }
+def sourceInputs = kotlinRoots.asFileTree.matching { include '**/*.kt' }
+def result = layout.buildDirectory.file('reports/policy/result.json')
+tasks.register('policyCheck', Exec) {
+    group = 'verification'
+    inputs.file(binary).withPathSensitivity(PathSensitivity.NONE)
+    inputs.file(policy).withPathSensitivity(PathSensitivity.RELATIVE)
+    inputs.files(sourceInputs).withPathSensitivity(PathSensitivity.RELATIVE)
+    inputs.property('modulePath', project.path)
+    outputs.file(result)
+    def argv = [binary, 'check', '--config', policy, '--module', project.path, '--report', result.get().asFile]
+    kotlinRoots.each { argv.addAll(['--root', it]) }
+    commandLine argv
+}
+tasks.matching { it.name == 'check' }.configureEach { dependsOn 'policyCheck' }

@@ -1,0 +1,12 @@
+{
+  "schema-version": 1,
+  "files": 4,
+  "applicable-rules": [
+    "NAME001",
+    "AUTH001",
+    "JPA001",
+    "JPA002",
+    "JPA003"
+  ],
+  "diagnostics": []
+}

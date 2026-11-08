@@ -1,0 +1,11 @@
+{
+  "module": ":sample",
+  "rule": "JPA002",
+  "expected": [
+    {
+      "code": "DYNAMIC_QUERY",
+      "status": "skipped",
+      "severity": "info"
+    }
+  ]
+}

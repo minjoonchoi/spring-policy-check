@@ -1,0 +1,11 @@
+{
+  "module": ":sample",
+  "rule": "JPA002",
+  "expected": [
+    {
+      "code": "PARAMETER_BINDING",
+      "status": "skipped",
+      "severity": "info"
+    }
+  ]
+}

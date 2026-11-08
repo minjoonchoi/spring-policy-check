@@ -1,0 +1,11 @@
+{
+  "module": ":sample",
+  "rule": "JPA002",
+  "expected": [
+    {
+      "code": "EXECUTION_CHAIN",
+      "status": "skipped",
+      "severity": "info"
+    }
+  ]
+}

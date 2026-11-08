@@ -1,0 +1,138 @@
+Starting a Gradle Daemon, 2 incompatible and 2 stopped Daemons could not be reused, use --status for details
+
+> Task :policySpecTest
+   Compiling spring-policy v0.1.0 (/workspace/scratch/349fb3118427/spring-policy-rust)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.35s
+     Running unittests src/lib.rs (target/debug/deps/spring_policy-e8bccbaa6c6b39d6)
+
+running 8 tests
+test query::tests::bulk_is_distinct ... ok
+test query::tests::equality_and_sort ... ok
+test query::tests::comment_rejected ... ok
+test query::tests::comparison ... ok
+test query::tests::native_mapping ... ok
+     Running unittests src/main.rs (target/debug/deps/spring_policy-1dbbb384e0ba7ad1)
+test query::tests::never_accept_prefix ... ok
+test query::tests::or_is_not_and ... ok
+test query::tests::quoted_literal_is_not_parameter ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+     Running tests/acceptance.rs (target/debug/deps/acceptance-f1c28de4d175a7ea)
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+running 67 tests
+test auth_header_case_insensitive ... ok
+test auth_import_alias ... ok
+test auth_header_bad ... ok
+test auth_constant ... ok
+test auth_inferred_receiver_skips ... ok
+test auth_other_header ... ok
+test auth_dynamic_header ... ok
+test auth_decoder_bad ... ok
+test auth_helper_call_bad ... ok
+test auth_principal_allowed ... ok
+test auth_resolver_allowed ... ok
+test auth_package_alone_insufficient ... ok
+test auth_spring_header_constant ... ok
+test auth_resolver_wrong_package ... ok
+test class_kind_not_data ... ok
+test auth_shadowed_receiver ... ok
+test class_name_good ... ok
+test class_name_bad ... ok
+test command_class_bad ... ok
+test auth_same_name_other_type ... ok
+test auth_request_header_annotation ... ok
+test command_class_good ... ok
+test command_data_bad ... ok
+test command_data_good ... ok
+test data_name_good ... ok
+test comments_not_code ... ok
+test data_name_bad ... ok
+test data_kind_not_class ... ok
+test em_criteria_allowed ... ok
+test enum_excluded ... ok
+test em_hint_skip ... ok
+test em_missing_binding ... ok
+test em_native_candidate ... ok
+test em_dynamic_skip ... ok
+test em_other_type_allowed ... ok
+test em_query_candidate ... ok
+test em_named_query_allowed ... ok
+test interface_excluded ... ok
+test jpql_derived ... ok
+test jpql_alias ... ok
+test jpql_already_derived ... ok
+test jpql_bulk_skip ... ok
+test jpql_const ... ok
+test jpql_lock_skip ... ok
+test jpql_named_param ... ok
+test jpql_foreign_annotation ... ok
+test jpql_extra_param ... ok
+test jpql_nullable_skip ... ok
+test jpql_order ... ok
+test jpql_not_native ... ok
+test local_class_excluded ... ok
+test jpql_or_skip ... ok
+test jpql_property_unknown ... ok
+test jpql_reused_param ... ok
+test jpql_projection_skip ... ok
+test native_converter_skip ... ok
+test native_column_unknown ... ok
+test native_table_unknown ... ok
+test out_of_module ... ok
+test native_dialect_skip ... ok
+test native_annotation_candidate ... ok
+test query_data_bad ... ok
+test native_query_candidate ... ok
+test out_of_package ... ok
+test query_class_bad ... ok
+test query_data_good ... ok
+test query_class_good ... ok
+
+test result: ok. 67 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+     Running tests/robustness.rs (target/debug/deps/robustness-7b4ff3e36918fd1e)
+
+running 15 tests
+test empty_rules_fail ... ok
+test bad_regex_fails ... ok
+test invalid_kotlin_fails ... ok
+test invalid_version_fails ... ok
+test cli_rejects_unknown_options ... ok
+test empty_input_fails ... ok
+test cli_missing_root_exits_two ... ok
+test duplicate_class_is_analysis_error ... ok
+test unknown_config_key_fails ... ok
+test generated_sources_excluded ... ok
+test cli_valid_exits_zero ... ok
+test cli_errors_exit_one ... ok
+test cli_warnings_exit_zero ... ok
+test source_order_is_deterministic ... ok
+test serial_and_parallel_reports_match ... ok
+   Doc-tests spring_policy
+
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+
+> Task :policyGoodCheck
+4 files; 5 applicable rules; 0 errors; 0 diagnostics; 0 skipped
+
+> Task :policyWarningCheck
+samples/warnings/Reader.kt:6:9 [WARNING] JPA002 PREFER_QUERY_ANNOTATION — EntityManager 문자열 JPQL 구현을 분석했습니다.
+  제안: Repository의 애너테이션 기반 구현을 검토하세요. 후보: @Query("select u from User u where u.email = :email") — 파라미터·반환 타입·트랜잭션 경계를 보존하세요
+samples/warnings/UserRepository.kt:6:2 [WARNING] JPA001 PREFER_DERIVED — 지원하는 단순 JPQL 조회 패턴에 해당합니다.
+  제안: 파생 쿼리 메서드 사용을 검토하세요. 후보: fun findByEmail(email: String): List<User>
+3 files; 4 applicable rules; 0 errors; 2 diagnostics; 0 skipped
+
+BUILD SUCCESSFUL in 5s
+3 actionable tasks: 3 executed

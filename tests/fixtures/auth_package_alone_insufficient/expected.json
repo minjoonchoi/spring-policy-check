@@ -1,0 +1,11 @@
+{
+  "module": ":sample",
+  "rule": "AUTH001",
+  "expected": [
+    {
+      "code": "AUTH_OUTSIDE_BOUNDARY",
+      "status": "violation",
+      "severity": "error"
+    }
+  ]
+}

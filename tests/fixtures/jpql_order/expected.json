@@ -1,0 +1,12 @@
+{
+  "module": ":sample",
+  "rule": "JPA001",
+  "expected": [
+    {
+      "code": "PREFER_DERIVED",
+      "status": "suggestion",
+      "severity": "warning",
+      "suggestion_contains": "findByAgeGreaterThanEqualOrderByIdDesc"
+    }
+  ]
+}

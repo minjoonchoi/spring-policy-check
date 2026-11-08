@@ -1,0 +1,78 @@
+# Executable v0.1 specification. Package names and suffixes are reviewable examples.
+version: 1
+exclude-path-patterns:
+  - '(^|/)(build|generated)(/|$)'
+rules:
+  - id: NAME001
+    severity: error
+    scope: {modules: [':sample', ':api'], package-pattern: '^com\.example\.api\.controller$'}
+    check: {type: name, declaration: class, name-pattern: '^[A-Z][A-Za-z0-9]*Controller$'}
+    message: 'Controller 패키지의 일반 클래스 이름 규칙 위반'
+    suggestion: '*Controller suffix를 사용하세요.'
+  - id: NAME002
+    severity: error
+    scope: {modules: [':sample', ':api'], package-pattern: '^com\.example\.api\.request$'}
+    check: {type: name, declaration: data-class, name-pattern: '^[A-Z][A-Za-z0-9]*Request$'}
+    message: '요청 데이터 클래스 이름 규칙 위반'
+    suggestion: '*Request suffix를 사용하세요.'
+  - id: CQ001
+    severity: error
+    scope: {modules: [':sample', ':application'], package-pattern: '^com\.example\.application\.command\.service$'}
+    check: {type: name, declaration: class, name-pattern: '^[A-Z][A-Za-z0-9]*CommandService$'}
+    message: 'CUD 역할 클래스 이름 규칙 위반'
+    suggestion: '*CommandService suffix를 사용하세요.'
+  - id: CQ002
+    severity: error
+    scope: {modules: [':sample', ':application'], package-pattern: '^com\.example\.application\.query\.service$'}
+    check: {type: name, declaration: class, name-pattern: '^[A-Z][A-Za-z0-9]*QueryService$'}
+    message: 'R 역할 클래스 이름 규칙 위반'
+    suggestion: '*QueryService suffix를 사용하세요.'
+  - id: CQ003
+    severity: error
+    scope: {modules: [':sample', ':application'], package-pattern: '^com\.example\.application\.command\.model$'}
+    check: {type: name, declaration: data-class, name-pattern: '^[A-Z][A-Za-z0-9]*Command$'}
+    message: 'CUD 입력 데이터 클래스 이름 규칙 위반'
+    suggestion: '*Command suffix를 사용하세요.'
+  - id: CQ004
+    severity: error
+    scope: {modules: [':sample', ':application'], package-pattern: '^com\.example\.application\.query\.criteria$'}
+    check: {type: name, declaration: data-class, name-pattern: '^[A-Z][A-Za-z0-9]*Criteria$'}
+    message: 'R 검색 조건 데이터 클래스 이름 규칙 위반'
+    suggestion: '*Criteria suffix를 사용하세요.'
+  - id: AUTH001
+    severity: error
+    scope: {modules: [':sample', ':api', ':application', ':security'], package-pattern: '^com\.example(?:\..*)?$'}
+    check:
+      type: auth-boundary
+      allowed-package-pattern: '^com\.example\.security(?:\..*)?$'
+      allowed-supertypes:
+        - org.springframework.web.filter.OncePerRequestFilter
+        - org.springframework.security.oauth2.server.resource.web.BearerTokenResolver
+        - org.springframework.security.authentication.AuthenticationProvider
+        - org.springframework.security.oauth2.jwt.JwtDecoder
+      allowed-types: [com.example.security.TokenReader]
+      token-headers: [Authorization, X-Auth-Token]
+      restricted-calls:
+        - 'org.springframework.security.oauth2.jwt.JwtDecoder#decode'
+        - 'org.springframework.security.oauth2.server.resource.web.BearerTokenResolver#resolve'
+        - 'com.example.security.TokenReader#extract'
+    message: '인증 토큰 처리가 허용된 Security 구성요소 밖에 있습니다.'
+    suggestion: 'Security Filter/Resolver/Provider 경로에서 공통 처리하고 업무 코드에는 검증된 인증정보를 전달하세요.'
+  - id: JPA001
+    severity: warning
+    scope: {modules: [':sample', ':persistence'], package-pattern: '^com\.example\.persistence(?:\..*)?$'}
+    check: {type: prefer-derived-query, max-predicates: 3, max-method-length: 100}
+    message: '지원하는 단순 JPQL 조회 패턴에 해당합니다.'
+    suggestion: '파생 쿼리 메서드 사용을 검토하세요. 후보:'
+  - id: JPA002
+    severity: warning
+    scope: {modules: [':sample', ':persistence'], package-pattern: '^com\.example\.persistence(?:\..*)?$'}
+    check: {type: prefer-query-annotation}
+    message: 'EntityManager 문자열 JPQL 구현을 분석했습니다.'
+    suggestion: 'Repository의 애너테이션 기반 구현을 검토하세요. 후보:'
+  - id: JPA003
+    severity: info
+    scope: {modules: [':sample', ':persistence'], package-pattern: '^com\.example\.persistence(?:\..*)?$'}
+    check: {type: prefer-jpa-over-native}
+    message: 'Native SQL의 JPA 대체 가능성을 검토했습니다.'
+    suggestion: '엔티티 매핑에 기반한 JPQL 검토 후보:'

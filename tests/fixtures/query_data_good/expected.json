@@ -1,0 +1,5 @@
+{
+  "module": ":sample",
+  "rule": "CQ004",
+  "expected": []
+}

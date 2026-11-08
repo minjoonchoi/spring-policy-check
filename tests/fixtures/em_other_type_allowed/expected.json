@@ -1,0 +1,5 @@
+{
+  "module": ":sample",
+  "rule": "JPA002",
+  "expected": []
+}

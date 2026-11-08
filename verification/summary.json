@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-08",
+  "rust": "1.99.1",
+  "gradle": {
+    "policySpecTest": "success",
+    "policyGoodCheck": "success",
+    "policyWarningCheck": "success",
+    "policyCheck": "expected failure (2 errors)",
+    "configuration_cache": "reused",
+    "unchanged_inputs": "UP-TO-DATE"
+  },
+  "java": "21.0.13",
+  "tests": {
+    "query_grammar": 8,
+    "kotlin_acceptance": 67,
+    "configuration_cli_determinism": 15,
+    "total": 90,
+    "failed": 0
+  },
+  "runtime": "Rust binary, no detekt or JVM analysis",
+  "limitations": [
+    "Source syntax and explicitly declared type subset; no Kotlin compiler-level type inference.",
+    "CUD/R roles are defined by package, not inferred from all side effects.",
+    "Query suggestions were not validated against a running database.",
+    "Security filter registration and runtime coverage are not verified.",
+    "Linux x86_64 binary only; other platforms require compilation."
+  ]
+}

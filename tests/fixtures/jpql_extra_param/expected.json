@@ -1,0 +1,11 @@
+{
+  "module": ":sample",
+  "rule": "JPA001",
+  "expected": [
+    {
+      "code": "EXTRA_PARAMETERS",
+      "status": "skipped",
+      "severity": "info"
+    }
+  ]
+}

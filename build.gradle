@@ -1,0 +1,33 @@
+plugins { id 'base' }
+
+def binaryName = System.getProperty('os.name').toLowerCase().contains('windows') ? 'spring-policy.exe' : 'spring-policy'
+def binary = providers.gradleProperty('policyBinary').map { file(it) }.orElse(layout.projectDirectory.file("target/release/${binaryName}").asFile)
+def cargo = providers.gradleProperty('cargoBinary').orElse('cargo')
+
+tasks.register('policyBuild', Exec) {
+    group = 'build'
+    description = 'Build the Rust binary once. policyCheck never compiles Rust.'
+    inputs.files(fileTree('src'), 'Cargo.toml', 'Cargo.lock')
+    outputs.file(layout.projectDirectory.file("target/release/${binaryName}"))
+    commandLine cargo.get(), 'build', '--release', '--locked'
+}
+tasks.register('policySpecTest', Exec) {
+    group = 'verification'
+    description = 'Run the executable rule specification against real Kotlin fixtures.'
+    commandLine cargo.get(), 'test', '--locked'
+}
+['policyCheck':'violations', 'policyGoodCheck':'valid', 'policyWarningCheck':'warnings'].each { taskName, example ->
+    tasks.register(taskName, Exec) {
+        group = 'verification'
+        description = "Run the prebuilt Rust binary on samples/${example}."
+        inputs.file(binary).withPathSensitivity(PathSensitivity.NONE)
+        inputs.file('policy.yml').withPathSensitivity(PathSensitivity.RELATIVE)
+        inputs.files(fileTree("samples/${example}") { include '**/*.kt' }, fileTree('samples/common') { include '**/*.kt' }).withPathSensitivity(PathSensitivity.RELATIVE)
+        inputs.property('modulePath', ':sample')
+        outputs.file(layout.buildDirectory.file("reports/policy/${example}.json"))
+        commandLine binary.get(), 'check', '--config', 'policy.yml', '--module', ':sample',
+            '--root', "samples/${example}", '--root', 'samples/common',
+            '--report', layout.buildDirectory.file("reports/policy/${example}.json").get().asFile
+    }
+}
+tasks.named('check') { dependsOn 'policySpecTest', 'policyGoodCheck' }

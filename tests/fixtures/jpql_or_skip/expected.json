@@ -1,0 +1,11 @@
+{
+  "module": ":sample",
+  "rule": "JPA001",
+  "expected": [
+    {
+      "code": "UNSUPPORTED_QUERY",
+      "status": "skipped",
+      "severity": "info"
+    }
+  ]
+}

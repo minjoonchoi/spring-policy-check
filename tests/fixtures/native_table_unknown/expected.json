@@ -1,0 +1,11 @@
+{
+  "module": ":sample",
+  "rule": "JPA003",
+  "expected": [
+    {
+      "code": "TABLE_MAPPING",
+      "status": "skipped",
+      "severity": "info"
+    }
+  ]
+}

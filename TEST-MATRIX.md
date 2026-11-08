@@ -1,0 +1,73 @@
+# Kotlin 소스 인수 테스트 목록
+
+각 행은 별도의 Rust test입니다. 입력 `.kt`와 `expected.json`이 같은 fixture 디렉터리에 있습니다.
+
+| Case | Rule | Module | Expected |
+| --- | --- | --- | --- |
+| `auth_constant` | AUTH001 | `:sample` | ERROR / AUTH_OUTSIDE_BOUNDARY |
+| `auth_decoder_bad` | AUTH001 | `:sample` | ERROR / AUTH_OUTSIDE_BOUNDARY |
+| `auth_dynamic_header` | AUTH001 | `:sample` | INFO / DYNAMIC_HEADER |
+| `auth_header_bad` | AUTH001 | `:sample` | ERROR / AUTH_OUTSIDE_BOUNDARY |
+| `auth_header_case_insensitive` | AUTH001 | `:sample` | ERROR / AUTH_OUTSIDE_BOUNDARY |
+| `auth_helper_call_bad` | AUTH001 | `:sample` | ERROR / AUTH_OUTSIDE_BOUNDARY |
+| `auth_import_alias` | AUTH001 | `:sample` | ERROR / AUTH_OUTSIDE_BOUNDARY |
+| `auth_inferred_receiver_skips` | AUTH001 | `:sample` | INFO / UNRESOLVED_RECEIVER |
+| `auth_other_header` | AUTH001 | `:sample` | PASS (진단 없음) |
+| `auth_package_alone_insufficient` | AUTH001 | `:sample` | ERROR / AUTH_OUTSIDE_BOUNDARY |
+| `auth_principal_allowed` | AUTH001 | `:sample` | PASS (진단 없음) |
+| `auth_request_header_annotation` | AUTH001 | `:sample` | ERROR / AUTH_HEADER_PARAMETER |
+| `auth_resolver_allowed` | AUTH001 | `:sample` | PASS (진단 없음) |
+| `auth_resolver_wrong_package` | AUTH001 | `:sample` | ERROR / AUTH_OUTSIDE_BOUNDARY |
+| `auth_same_name_other_type` | AUTH001 | `:sample` | PASS (진단 없음) |
+| `auth_shadowed_receiver` | AUTH001 | `:sample` | PASS (진단 없음) |
+| `auth_spring_header_constant` | AUTH001 | `:sample` | ERROR / AUTH_OUTSIDE_BOUNDARY |
+| `class_kind_not_data` | NAME002 | `:sample` | PASS (진단 없음) |
+| `class_name_bad` | NAME001 | `:sample` | ERROR / NAME_MISMATCH |
+| `class_name_good` | NAME001 | `:sample` | PASS (진단 없음) |
+| `command_class_bad` | CQ001 | `:sample` | ERROR / NAME_MISMATCH |
+| `command_class_good` | CQ001 | `:sample` | PASS (진단 없음) |
+| `command_data_bad` | CQ003 | `:sample` | ERROR / NAME_MISMATCH |
+| `command_data_good` | CQ003 | `:sample` | PASS (진단 없음) |
+| `comments_not_code` | NAME001 | `:sample` | PASS (진단 없음) |
+| `data_kind_not_class` | NAME001 | `:sample` | PASS (진단 없음) |
+| `data_name_bad` | NAME002 | `:sample` | ERROR / NAME_MISMATCH |
+| `data_name_good` | NAME002 | `:sample` | PASS (진단 없음) |
+| `em_criteria_allowed` | JPA002 | `:sample` | PASS (진단 없음) |
+| `em_dynamic_skip` | JPA002 | `:sample` | INFO / DYNAMIC_QUERY |
+| `em_hint_skip` | JPA002 | `:sample` | INFO / EXECUTION_CHAIN |
+| `em_missing_binding` | JPA002 | `:sample` | INFO / PARAMETER_BINDING |
+| `em_named_query_allowed` | JPA002 | `:sample` | PASS (진단 없음) |
+| `em_native_candidate` | JPA003 | `:sample` | INFO / PREFER_JPA_REVIEW |
+| `em_other_type_allowed` | JPA002 | `:sample` | PASS (진단 없음) |
+| `em_query_candidate` | JPA002 | `:sample` | WARNING / PREFER_QUERY_ANNOTATION |
+| `enum_excluded` | NAME001 | `:sample` | PASS (진단 없음) |
+| `interface_excluded` | NAME001 | `:sample` | PASS (진단 없음) |
+| `jpql_alias` | JPA001 | `:sample` | WARNING / PREFER_DERIVED |
+| `jpql_already_derived` | JPA001 | `:sample` | PASS (진단 없음) |
+| `jpql_bulk_skip` | JPA001 | `:sample` | INFO / BULK_DML |
+| `jpql_const` | JPA001 | `:sample` | WARNING / PREFER_DERIVED |
+| `jpql_derived` | JPA001 | `:sample` | WARNING / PREFER_DERIVED |
+| `jpql_extra_param` | JPA001 | `:sample` | INFO / EXTRA_PARAMETERS |
+| `jpql_foreign_annotation` | JPA001 | `:sample` | PASS (진단 없음) |
+| `jpql_lock_skip` | JPA001 | `:sample` | INFO / QUERY_OPTIONS |
+| `jpql_named_param` | JPA001 | `:sample` | WARNING / PREFER_DERIVED |
+| `jpql_not_native` | JPA003 | `:sample` | PASS (진단 없음) |
+| `jpql_nullable_skip` | JPA001 | `:sample` | INFO / NULL_SEMANTICS |
+| `jpql_or_skip` | JPA001 | `:sample` | INFO / UNSUPPORTED_QUERY |
+| `jpql_order` | JPA001 | `:sample` | WARNING / PREFER_DERIVED |
+| `jpql_projection_skip` | JPA001 | `:sample` | INFO / UNSUPPORTED_QUERY |
+| `jpql_property_unknown` | JPA001 | `:sample` | INFO / UNKNOWN_PROPERTY |
+| `jpql_reused_param` | JPA001 | `:sample` | INFO / REUSED_PARAMETER |
+| `local_class_excluded` | NAME001 | `:sample` | PASS (진단 없음) |
+| `native_annotation_candidate` | JPA003 | `:sample` | INFO / PREFER_JPA_REVIEW |
+| `native_column_unknown` | JPA003 | `:sample` | INFO / UNMAPPED_COLUMN |
+| `native_converter_skip` | JPA003 | `:sample` | INFO / COMPLEX_MAPPING |
+| `native_dialect_skip` | JPA003 | `:sample` | INFO / UNSUPPORTED_OPERATOR |
+| `native_query_candidate` | JPA003 | `:sample` | INFO / PREFER_JPA_REVIEW |
+| `native_table_unknown` | JPA003 | `:sample` | INFO / TABLE_MAPPING |
+| `out_of_module` | NAME001 | `:unrelated` | PASS (진단 없음) |
+| `out_of_package` | NAME001 | `:sample` | PASS (진단 없음) |
+| `query_class_bad` | CQ002 | `:sample` | ERROR / NAME_MISMATCH |
+| `query_class_good` | CQ002 | `:sample` | PASS (진단 없음) |
+| `query_data_bad` | CQ004 | `:sample` | ERROR / NAME_MISMATCH |
+| `query_data_good` | CQ004 | `:sample` | PASS (진단 없음) |

@@ -1,0 +1,11 @@
+{
+  "module": ":sample",
+  "rule": "JPA003",
+  "expected": [
+    {
+      "code": "COMPLEX_MAPPING",
+      "status": "skipped",
+      "severity": "info"
+    }
+  ]
+}
