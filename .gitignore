@@ -29,6 +29,8 @@ replay_pid*
 /.gradle/
 /dist/
 /bin/
+__pycache__/
+*.py[cod]
 
 # Commit the Gradle wrapper
 !gradle/wrapper/gradle-wrapper.jar

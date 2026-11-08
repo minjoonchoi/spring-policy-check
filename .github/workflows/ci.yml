@@ -24,16 +24,18 @@ jobs:
           java-version: '21'
       - name: Check Rust format
         run: cargo fmt --all -- --check
+      - name: Install pinned license checker
+        run: bash .github/install-cargo-deny.sh
+      - name: Verify licenses and attribution
+        run: python3 scripts/license-check.py
+      - name: Test license policy enforcement
+        run: python3 -m unittest discover -s tests -p 'test_license_compliance.py' -v
       - name: Build native checker
         run: cargo build --release --locked
       - name: Verify rules and Gradle task behavior
         run: python3 scripts/verify-gradle.py
       - name: Package Linux binary
-        run: |
-          mkdir -p dist
-          tar -czf dist/spring-policy-linux-x86_64.tar.gz -C target/release spring-policy
-          cd dist
-          sha256sum spring-policy-linux-x86_64.tar.gz > SHA256SUMS
+        run: python3 scripts/package-release.py
       - name: Upload verified binary and reports
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:

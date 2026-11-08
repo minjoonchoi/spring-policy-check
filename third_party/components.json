@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-08",
+  "components": [
+    {
+      "id": "gradle-wrapper",
+      "version": "8.10.2",
+      "scope": "source repository; build tool, not bundled in native archive",
+      "licenses": [
+        "Apache-2.0"
+      ],
+      "notice_files": [
+        {
+          "path": "third_party/gradle-wrapper-8.10.2/LICENSE",
+          "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+          "source": "https://github.com/gradle/gradle/blob/v8.10.2/LICENSE"
+        }
+      ],
+      "checked_files": [
+        {
+          "path": "gradle/wrapper/gradle-wrapper.jar",
+          "sha256": "2db75c40782f5e8ba1fc278a5574bab070adccb2d21ca5a6e5ed840888448046"
+        },
+        {
+          "path": "gradle/wrapper/gradle-wrapper.properties",
+          "sha256": "2b5aa5330711bf4d66e32ee7d5b784a1e07aaf08f9b23a8624a4b2feac5225be"
+        },
+        {
+          "path": "gradlew",
+          "sha256": "a3648413b47ef77af21d5ebc36c687c7d103aaef3e17f33de7d4f080a6f300a3"
+        },
+        {
+          "path": "gradlew.bat",
+          "sha256": "57931b17dd228e5c24dac90e815d0bf82477e831a4618dfab4136f5446b42a9f"
+        }
+      ]
+    },
+    {
+      "id": "rust-standard-library",
+      "version": "1.99.1",
+      "scope": "linked runtime; Linux x86_64 GNU release only",
+      "licenses": [
+        "MIT",
+        "Apache-2.0 WITH LLVM-exception",
+        "BSD-2-Clause",
+        "Unicode-3.0",
+        "Zlib"
+      ],
+      "notice_files": [
+        {
+          "path": "third_party/rust-1.99.1/LICENSE-MIT",
+          "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1",
+          "source": "https://github.com/rust-lang/rust/blob/1.99.1/LICENSE-MIT"
+        },
+        {
+          "path": "third_party/rust-1.99.1/COPYRIGHT-library.html",
+          "sha256": "5647be074c8edf7339fd863055923a8fc80bc5610a8d4661ec3b767b9d392c27",
+          "source": "https://static.rust-lang.org/dist/2026-10-15/rust-docs-1.99.1-x86_64-unknown-linux-gnu.tar.xz",
+          "archive_sha256": "f94e0e39c45d4517981d35cd695eef30aeead92a5875f1014cd851fda1b2321e",
+          "component_path": "share/doc/rust/COPYRIGHT-library.html"
+        }
+      ],
+      "checked_files": [
+        {
+          "path": "rust-toolchain.toml",
+          "sha256": "7c3650fd9cfa530cec6a61d25602726381988a08b5ebf118fa1ef2b35d5cf609"
+        }
+      ],
+      "review_notes": "Original multi-target notice snapshot. fortanix-sgx-abi (MPL-2.0) is SGX-only, not Linux GNU. r-efi offers MIT/Apache alternatives and is UEFI-only. No approval for additional release targets."
+    },
+    {
+      "id": "cargo-deny",
+      "version": "0.20.2",
+      "scope": "CI/developer tool; not bundled",
+      "licenses": [
+        "MIT"
+      ],
+      "notice_files": [
+        {
+          "path": "third_party/cargo-deny-0.20.2/LICENSE-MIT",
+          "sha256": "090a294a492ab2f41388252312a65cf2f0e423330b721a68c6665ac64766753b",
+          "source": "https://github.com/EmbarkStudios/cargo-deny/blob/0.20.2/LICENSE-MIT"
+        }
+      ],
+      "checked_files": [
+        {
+          "path": ".github/install-cargo-deny.sh",
+          "sha256": "a1ab2ac38088401e849a27908c1b326f8394a8becc6d75af1bd9811c4bd80901"
+        }
+      ],
+      "release_archive_sha256": "9f12ed4c49936e09b48bf862b595cde2fe64fcbd9d74dfacac6131ca824c8d5f"
+    },
+    {
+      "id": "actions/checkout",
+      "version": "11d5960a326750d5838078e36cf38b85af677262",
+      "scope": "CI orchestration; not bundled",
+      "licenses": [
+        "MIT"
+      ],
+      "action_ref": "actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+      "notice_files": [
+        {
+          "path": "third_party/actions-checkout/LICENSE",
+          "sha256": "3e855ffa704114a51628ef8f0bf3aeb41728adf9d9070e263bf58aa5640b0eb5",
+          "source": "https://github.com/actions/checkout/blob/11d5960a326750d5838078e36cf38b85af677262/LICENSE"
+        }
+      ],
+      "review_notes": "Top-level action license and exact reference reviewed; the complete hosted runner environment is outside the distributable inventory."
+    },
+    {
+      "id": "actions/setup-java",
+      "version": "cf277c60eb25467037889841efdb72551f06f6c3",
+      "scope": "CI orchestration; not bundled",
+      "licenses": [
+        "MIT"
+      ],
+      "action_ref": "actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3",
+      "notice_files": [
+        {
+          "path": "third_party/actions-setup-java/LICENSE",
+          "sha256": "7d070f6b64d9bcc530fe99cc21eaaa4b3c364e0b2d367d7735671fa202a03b32",
+          "source": "https://github.com/actions/setup-java/blob/cf277c60eb25467037889841efdb72551f06f6c3/LICENSE"
+        }
+      ],
+      "review_notes": "Top-level action license and exact reference reviewed; the complete hosted runner environment is outside the distributable inventory."
+    },
+    {
+      "id": "actions/upload-artifact",
+      "version": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+      "scope": "CI orchestration; not bundled",
+      "licenses": [
+        "MIT"
+      ],
+      "action_ref": "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+      "notice_files": [
+        {
+          "path": "third_party/actions-upload-artifact/LICENSE",
+          "sha256": "3e855ffa704114a51628ef8f0bf3aeb41728adf9d9070e263bf58aa5640b0eb5",
+          "source": "https://github.com/actions/upload-artifact/blob/ea165f8d65b6e75b540449e92b4886f43607fa02/LICENSE"
+        }
+      ],
+      "review_notes": "Top-level action license and exact reference reviewed; the complete hosted runner environment is outside the distributable inventory."
+    }
+  ]
+}

@@ -8,6 +8,12 @@ Kotlin Spring 저장소의 규칙을 YAML로 정의하고, 실제 Kotlin 소스�
 
 CLI와 바이너리 이름은 `spring-policy`입니다.
 
+## 기업 사용과 라이선스
+
+프로젝트는 MIT이며 의존성은 [오픈소스 사용·고지·배포 기준](docs/OPEN_SOURCE_POLICY.md)에 따라 관리합니다. 회사별 승인 목록을 대신하는 기준은 아니며, 현재 Cargo 의존성 40개는 저장소의 허용 기준을 통과합니다.
+
+[제3자 고지 목록](THIRD_PARTY_NOTICES.md)에 버전·출처·선택한 조건을 기록하고 원문은 `third_party/`에 보존합니다. 새 의존성, 미승인 라이선스, 고지 누락·변경은 CI에서 차단합니다. 배포 tar.gz에는 프로젝트 라이선스와 전체 고지가 포함됩니다. `./gradlew licenseCheck`로 같은 검사를 실행할 수 있으며, 일반 `policyCheck` 속도에는 영향을 주지 않습니다.
+
 ## 바로 실행
 
 필요 환경: 소스에서 빌드할 때 Rust/Cargo와 C toolchain. Gradle을 사용할 때 JDK 17 이상. 검증 환경은 Rust 1.99.1, Gradle 8.10.2, Java 21, Linux x86_64입니다. 최초 의존성 다운로드는 네트워크가 필요하고, 배포 바이너리의 검사 실행은 네트워크를 사용하지 않습니다.

@@ -16,6 +16,11 @@ tasks.register('policySpecTest', Exec) {
     description = 'Run the executable rule specification against real Kotlin fixtures.'
     commandLine cargo.get(), 'test', '--locked'
 }
+tasks.register('licenseCheck', Exec) {
+    group = 'verification'
+    description = 'Check approved dependency licenses and distribution notices.'
+    commandLine providers.gradleProperty('pythonBinary').orElse('python3').get(), 'scripts/license-check.py'
+}
 ['policyCheck':'violations', 'policyGoodCheck':'valid', 'policyWarningCheck':'warnings'].each { taskName, example ->
     tasks.register(taskName, Exec) {
         group = 'verification'
@@ -30,4 +35,4 @@ tasks.register('policySpecTest', Exec) {
             '--report', layout.buildDirectory.file("reports/policy/${example}.json").get().asFile
     }
 }
-tasks.named('check') { dependsOn 'policySpecTest', 'policyGoodCheck' }
+tasks.named('check') { dependsOn 'licenseCheck', 'policySpecTest', 'policyGoodCheck' }
