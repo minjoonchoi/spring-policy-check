@@ -5,7 +5,7 @@
     {
       "id": "gradle-wrapper",
       "version": "8.10.2",
-      "scope": "source repository; build tool, not bundled in native archive",
+      "scope": "source repository; Gradle wrapper",
       "licenses": [
         "Apache-2.0"
       ],
@@ -34,39 +34,6 @@
           "sha256": "57931b17dd228e5c24dac90e815d0bf82477e831a4618dfab4136f5446b42a9f"
         }
       ]
-    },
-    {
-      "id": "rust-standard-library",
-      "version": "1.99.1",
-      "scope": "linked runtime; Linux x86_64 GNU release only",
-      "licenses": [
-        "MIT",
-        "Apache-2.0 WITH LLVM-exception",
-        "BSD-2-Clause",
-        "Unicode-3.0",
-        "Zlib"
-      ],
-      "notice_files": [
-        {
-          "path": "third_party/rust-1.99.1/LICENSE-MIT",
-          "sha256": "b71bd43a069ca0641a9ecfe585ca7b3c53b5cc1608f8b68321168698e28b5ea1",
-          "source": "https://github.com/rust-lang/rust/blob/1.99.1/LICENSE-MIT"
-        },
-        {
-          "path": "third_party/rust-1.99.1/COPYRIGHT-library.html",
-          "sha256": "5647be074c8edf7339fd863055923a8fc80bc5610a8d4661ec3b767b9d392c27",
-          "source": "https://static.rust-lang.org/dist/2026-10-15/rust-docs-1.99.1-x86_64-unknown-linux-gnu.tar.xz",
-          "archive_sha256": "f94e0e39c45d4517981d35cd695eef30aeead92a5875f1014cd851fda1b2321e",
-          "component_path": "share/doc/rust/COPYRIGHT-library.html"
-        }
-      ],
-      "checked_files": [
-        {
-          "path": "rust-toolchain.toml",
-          "sha256": "7c3650fd9cfa530cec6a61d25602726381988a08b5ebf118fa1ef2b35d5cf609"
-        }
-      ],
-      "review_notes": "Original multi-target notice snapshot. fortanix-sgx-abi (MPL-2.0) is SGX-only, not Linux GNU. r-efi offers MIT/Apache alternatives and is UEFI-only. No approval for additional release targets."
     },
     {
       "id": "actions/checkout",

@@ -1,1101 +1,160 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "reviewed_on": "2026-11-08",
-  "packages": [
+  "distribution": "Plugin JAR does not shade runtime or test dependencies. Gradle resolves runtime JARs unchanged.",
+  "dependencies": [
     {
-      "name": "aho-corasick",
-      "version": "1.1.5",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "c982642fa9e8606056828ee9a8505737230110bb1099153c79efe865c59d12ba",
-      "declared_license": "Unlicense OR MIT",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/BurntSushi/aho-corasick",
-      "upstream_commit": "5178060ce73d91938f8582d0360e3be031380440",
-      "notice_files": [
+      "coordinate": "org.jetbrains.kotlin:kotlin-compiler-embeddable:2.2.21",
+      "scope": "runtime",
+      "declared_licenses": [
         {
-          "path": "third_party/aho-corasick-1.1.5/COPYING",
-          "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
-          "source": "https://crates.io/crates/aho-corasick/1.1.5",
-          "registry_path": "COPYING"
-        },
-        {
-          "path": "third_party/aho-corasick-1.1.5/LICENSE-MIT",
-          "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
-          "source": "https://crates.io/crates/aho-corasick/1.1.5",
-          "registry_path": "LICENSE-MIT"
-        },
-        {
-          "path": "third_party/aho-corasick-1.1.5/UNLICENSE",
-          "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
-          "source": "https://crates.io/crates/aho-corasick/1.1.5",
-          "registry_path": "UNLICENSE"
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
         }
-      ]
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-compiler-embeddable/2.2.21/kotlin-compiler-embeddable-2.2.21.jar",
+      "artifact_sha256": "9588fa696ac5507af764fd5660df6894185e12704ec1bc3f5cb772af4987f295",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-compiler-embeddable/2.2.21/kotlin-compiler-embeddable-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-compiler-embeddable-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21",
+      "embedded_license_notes": "Includes Apache-2.0, BSD notices and GWT/Rhino code under NPL-1.1. See upstream license/README.md and rhino_LICENSE.txt. Unmodified external dependency; not shaded into this plugin."
     },
     {
-      "name": "cc",
-      "version": "1.11.1",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "4ff2a8126fff0f8c839080d619675a585e61720bb12d2baceae45769fd66f155",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/rust-lang/cc-rs",
-      "upstream_commit": "401b5a63050f33d86e58b2e303c1e7b0a1e8ff19",
-      "notice_files": [
+      "coordinate": "org.jetbrains.kotlin:kotlin-stdlib:2.2.21",
+      "scope": "runtime",
+      "declared_licenses": [
         {
-          "path": "third_party/cc-1.11.1/LICENSE-APACHE",
-          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
-          "source": "https://crates.io/crates/cc/1.11.1",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/cc-1.11.1/LICENSE-MIT",
-          "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
-          "source": "https://crates.io/crates/cc/1.11.1",
-          "registry_path": "LICENSE-MIT"
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
         }
-      ]
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/2.2.21/kotlin-stdlib-2.2.21.jar",
+      "artifact_sha256": "6558a3d233da56a20934b32159f9db5f86ed5816ef098f78a2c223dc6abb79dd",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/2.2.21/kotlin-stdlib-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-stdlib-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
     },
     {
-      "name": "crossbeam-deque",
-      "version": "0.8.8",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "622f3fc73690be383c7214310406f28a90e6edeadc3cea882f9d71e495b9711a",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/crossbeam-rs/crossbeam",
-      "upstream_commit": "2920c984290229ab4e0ca0452ef09e48a82063f3",
-      "notice_files": [
+      "coordinate": "org.jetbrains.kotlin:kotlin-script-runtime:2.2.21",
+      "scope": "runtime",
+      "declared_licenses": [
         {
-          "path": "third_party/crossbeam-deque-0.8.8/LICENSE-APACHE",
-          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
-          "source": "https://crates.io/crates/crossbeam-deque/0.8.8",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/crossbeam-deque-0.8.8/LICENSE-MIT",
-          "sha256": "5734ed989dfca1f625b40281ee9f4530f91b2411ec01cb748223e7eb87e201ab",
-          "source": "https://crates.io/crates/crossbeam-deque/0.8.8",
-          "registry_path": "LICENSE-MIT"
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
         }
-      ]
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-script-runtime/2.2.21/kotlin-script-runtime-2.2.21.jar",
+      "artifact_sha256": "2b1519b427b514d1536c1b425674b03fe914af637924028e9959c6625442df51",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-script-runtime/2.2.21/kotlin-script-runtime-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-script-runtime-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
     },
     {
-      "name": "crossbeam-epoch",
-      "version": "0.9.21",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "dc74980687109a3b14c72fd458107bf0baa1da1a1a805e178d15501ba9b86d9d",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/crossbeam-rs/crossbeam",
-      "upstream_commit": "2920c984290229ab4e0ca0452ef09e48a82063f3",
-      "notice_files": [
+      "coordinate": "org.jetbrains.kotlin:kotlin-reflect:1.6.10",
+      "scope": "runtime",
+      "declared_licenses": [
         {
-          "path": "third_party/crossbeam-epoch-0.9.21/LICENSE-APACHE",
-          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
-          "source": "https://crates.io/crates/crossbeam-epoch/0.9.21",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/crossbeam-epoch-0.9.21/LICENSE-MIT",
-          "sha256": "5734ed989dfca1f625b40281ee9f4530f91b2411ec01cb748223e7eb87e201ab",
-          "source": "https://crates.io/crates/crossbeam-epoch/0.9.21",
-          "registry_path": "LICENSE-MIT"
+          "name": "The Apache License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
         }
-      ]
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-reflect/1.6.10/kotlin-reflect-1.6.10.jar",
+      "artifact_sha256": "3277ac102ae17aad10a55abec75ff5696c8d109790396434b496e75087854203",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-reflect/1.6.10/kotlin-reflect-1.6.10-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-reflect-1.6.10.pom",
+      "notices": "third_party/kotlin-reflect-1.6.10"
     },
     {
-      "name": "crossbeam-utils",
-      "version": "0.8.23",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "a31eee39dddec8330830986fcd7625edb5a24ec90ea038215273bbc3adb08ac6",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/crossbeam-rs/crossbeam",
-      "upstream_commit": "2920c984290229ab4e0ca0452ef09e48a82063f3",
-      "notice_files": [
+      "coordinate": "org.jetbrains.kotlin:kotlin-daemon-embeddable:2.2.21",
+      "scope": "runtime",
+      "declared_licenses": [
         {
-          "path": "third_party/crossbeam-utils-0.8.23/LICENSE-APACHE",
-          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
-          "source": "https://crates.io/crates/crossbeam-utils/0.8.23",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/crossbeam-utils-0.8.23/LICENSE-MIT",
-          "sha256": "5734ed989dfca1f625b40281ee9f4530f91b2411ec01cb748223e7eb87e201ab",
-          "source": "https://crates.io/crates/crossbeam-utils/0.8.23",
-          "registry_path": "LICENSE-MIT"
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
         }
-      ]
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-daemon-embeddable/2.2.21/kotlin-daemon-embeddable-2.2.21.jar",
+      "artifact_sha256": "91c0673c22e44b054ae0314d323860ebe1f3aff3f0ebc74fff82c4733dde09be",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-daemon-embeddable/2.2.21/kotlin-daemon-embeddable-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-daemon-embeddable-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
     },
     {
-      "name": "either",
-      "version": "1.19.0",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "0e9c71c2167ca323c882b99918929403426e2373ea17242ff5653e0d5e1058be",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/rayon-rs/either",
-      "upstream_commit": "1e4326df5972eb4a0ced66cb3b67fa0c5aca8493",
-      "notice_files": [
+      "coordinate": "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.8.0",
+      "scope": "runtime",
+      "declared_licenses": [
         {
-          "path": "third_party/either-1.19.0/LICENSE-APACHE",
-          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
-          "source": "https://crates.io/crates/either/1.19.0",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/either-1.19.0/LICENSE-MIT",
-          "sha256": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545",
-          "source": "https://crates.io/crates/either/1.19.0",
-          "registry_path": "LICENSE-MIT"
+          "name": "The Apache Software License, Version 2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
         }
-      ]
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.8.0/kotlinx-coroutines-core-jvm-1.8.0.jar",
+      "artifact_sha256": "9860906a1937490bf5f3b06d2f0e10ef451e65b95b269f22daf68a3d1f5065c5",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.8.0/kotlinx-coroutines-core-jvm-1.8.0-sources.jar",
+      "pom": "third_party/maven-poms/kotlinx-coroutines-core-jvm-1.8.0.pom",
+      "notices": "third_party/kotlinx-coroutines-1.8.0"
     },
     {
-      "name": "equivalent",
-      "version": "1.0.3",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "00d174d5400e5e8fd687ad1049e2f578285fa914201b1af7e8b112a4546bd826",
-      "declared_license": "Apache-2.0 OR MIT",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/indexmap-rs/equivalent",
-      "upstream_commit": "4ee88130bd4ab3229e785533da2af641be22deac",
-      "notice_files": [
+      "coordinate": "org.jetbrains:annotations:13.0",
+      "scope": "runtime",
+      "declared_licenses": [
         {
-          "path": "third_party/equivalent-1.0.3/LICENSE-APACHE",
-          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
-          "source": "https://crates.io/crates/equivalent/1.0.3",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/equivalent-1.0.3/LICENSE-MIT",
-          "sha256": "7365cc8878a1d7ce155a58c4ca09c3d7a6be413efa5334a80ea842912b669349",
-          "source": "https://crates.io/crates/equivalent/1.0.3",
-          "registry_path": "LICENSE-MIT"
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
         }
-      ]
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/annotations/13.0/annotations-13.0.jar",
+      "artifact_sha256": "ace2a10dc8e2d5fd34925ecac03e4988b2c0f851650c94b8cef49ba1bd111478",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/annotations/13.0/annotations-13.0-sources.jar",
+      "pom": "third_party/maven-poms/annotations-13.0.pom",
+      "notices": "third_party/annotations-13.0"
     },
     {
-      "name": "find-msvc-tools",
-      "version": "0.1.15",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "1c66915cc5391097de7a2b0b972e8505aa33c0df401fd3a6811dbdb32881ba48",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/rust-lang/cc-rs",
-      "upstream_commit": "ffbb10da608f715ed69a4561c4cbdca7c6fbbba6",
-      "notice_files": [
+      "coordinate": "org.yaml:snakeyaml:2.3",
+      "scope": "runtime",
+      "declared_licenses": [
         {
-          "path": "third_party/find-msvc-tools-0.1.15/LICENSE-APACHE",
-          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
-          "source": "https://crates.io/crates/find-msvc-tools/0.1.15",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/find-msvc-tools-0.1.15/LICENSE-MIT",
-          "sha256": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
-          "source": "https://crates.io/crates/find-msvc-tools/0.1.15",
-          "registry_path": "LICENSE-MIT"
+          "name": "Apache License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
         }
-      ]
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/yaml/snakeyaml/2.3/snakeyaml-2.3.jar",
+      "artifact_sha256": "63a76fe66b652360bd4c2c107e6f0258daa7d4bb492008ba8c26fcd230ff9146",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/yaml/snakeyaml/2.3/snakeyaml-2.3-sources.jar",
+      "pom": "third_party/maven-poms/snakeyaml-2.3.pom",
+      "notices": "third_party/snakeyaml-2.3"
     },
     {
-      "name": "foldhash",
-      "version": "0.2.0",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "77ce24cb58228fbb8aa041425bb1050850ac19177686ea6e0f41a70416f56fdb",
-      "declared_license": "Zlib",
-      "selected_licenses": [
-        "Zlib"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/orlp/foldhash",
-      "upstream_commit": "8f878c636fda9c9e93384824ea45e06d03f009f5",
-      "notice_files": [
+      "coordinate": "junit:junit:4.13.2",
+      "scope": "test",
+      "declared_licenses": [
         {
-          "path": "third_party/foldhash-0.2.0/LICENSE",
-          "sha256": "b1181a40b2a7b25cf66fd01481713bc1005df082c53ef73e851e55071b102744",
-          "source": "https://crates.io/crates/foldhash/0.2.0",
-          "registry_path": "LICENSE"
+          "name": "Eclipse Public License 1.0",
+          "url": "http://www.eclipse.org/legal/epl-v10.html"
         }
-      ]
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar",
+      "artifact_sha256": "8e495b634469d64fb8acfa3495a065cbacc8a0fff55ce1e31007be4c16dc57d3",
+      "sources_url": "https://repo.maven.apache.org/maven2/junit/junit/4.13.2/junit-4.13.2-sources.jar",
+      "pom": "third_party/maven-poms/junit-4.13.2.pom",
+      "notices": "third_party/junit-4.13.2"
     },
     {
-      "name": "hashbrown",
-      "version": "0.17.1",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/rust-lang/hashbrown",
-      "upstream_commit": "c62a63a61b7caf2de8f9ecb7b06a66b0ab6bdf3d",
-      "notice_files": [
-        {
-          "path": "third_party/hashbrown-0.17.1/LICENSE-APACHE",
-          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
-          "source": "https://crates.io/crates/hashbrown/0.17.1",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/hashbrown-0.17.1/LICENSE-MIT",
-          "sha256": "ff8f68cb076caf8cefe7a6430d4ac086ce6af2ca8ce2c4e5a2004d4552ef52a2",
-          "source": "https://crates.io/crates/hashbrown/0.17.1",
-          "registry_path": "LICENSE-MIT"
-        }
-      ]
-    },
-    {
-      "name": "indexmap",
-      "version": "2.14.2",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "cc4e190f5d26ca7051642629da2c52fc03bde85a03197c99408dcd291734c855",
-      "declared_license": "Apache-2.0 OR MIT",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/indexmap-rs/indexmap",
-      "upstream_commit": "41a870887c4c77adf665886e63df08f406bfe37a",
-      "notice_files": [
-        {
-          "path": "third_party/indexmap-2.14.2/LICENSE-APACHE",
-          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
-          "source": "https://crates.io/crates/indexmap/2.14.2",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/indexmap-2.14.2/LICENSE-MIT",
-          "sha256": "ecc269ef87fd38a1d98e30bfac9ba964a9dbd9315c3770fed98d4d7cb5882055",
-          "source": "https://crates.io/crates/indexmap/2.14.2",
-          "registry_path": "LICENSE-MIT"
-        }
-      ]
-    },
-    {
-      "name": "itoa",
-      "version": "1.0.18",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/dtolnay/itoa",
-      "upstream_commit": "af77385d0daf4d0e949e81f2588be2e44f69f086",
-      "notice_files": [
-        {
-          "path": "third_party/itoa-1.0.18/LICENSE-APACHE",
-          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
-          "source": "https://crates.io/crates/itoa/1.0.18",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/itoa-1.0.18/LICENSE-MIT",
-          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
-          "source": "https://crates.io/crates/itoa/1.0.18",
-          "registry_path": "LICENSE-MIT"
-        }
-      ]
-    },
-    {
-      "name": "memchr",
-      "version": "2.8.3",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98",
-      "declared_license": "Unlicense OR MIT",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/BurntSushi/memchr",
-      "upstream_commit": "5fdb40c054e1fff359a2f7bdf7f87a13b34b465d",
-      "notice_files": [
-        {
-          "path": "third_party/memchr-2.8.3/COPYING",
-          "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
-          "source": "https://crates.io/crates/memchr/2.8.3",
-          "registry_path": "COPYING"
-        },
-        {
-          "path": "third_party/memchr-2.8.3/LICENSE-MIT",
-          "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
-          "source": "https://crates.io/crates/memchr/2.8.3",
-          "registry_path": "LICENSE-MIT"
-        },
-        {
-          "path": "third_party/memchr-2.8.3/UNLICENSE",
-          "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
-          "source": "https://crates.io/crates/memchr/2.8.3",
-          "registry_path": "UNLICENSE"
-        }
-      ]
-    },
-    {
-      "name": "proc-macro2",
-      "version": "1.0.107",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/dtolnay/proc-macro2",
-      "upstream_commit": "ed8a5497669cd63db33bf24646f261b012bbbc4a",
-      "notice_files": [
-        {
-          "path": "third_party/proc-macro2-1.0.107/LICENSE-APACHE",
-          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
-          "source": "https://crates.io/crates/proc-macro2/1.0.107",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/proc-macro2-1.0.107/LICENSE-MIT",
-          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
-          "source": "https://crates.io/crates/proc-macro2/1.0.107",
-          "registry_path": "LICENSE-MIT"
-        }
-      ]
-    },
-    {
-      "name": "quote",
-      "version": "1.0.47",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "1fbf4db142a473a8d80c26bbf18454ed458bf8d26c8219c331daecfdbd079001",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/dtolnay/quote",
-      "upstream_commit": "723dcb47d3f0ddc896e17287c8a8d3f2ea2317d5",
-      "notice_files": [
-        {
-          "path": "third_party/quote-1.0.47/LICENSE-APACHE",
-          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
-          "source": "https://crates.io/crates/quote/1.0.47",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/quote-1.0.47/LICENSE-MIT",
-          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
-          "source": "https://crates.io/crates/quote/1.0.47",
-          "registry_path": "LICENSE-MIT"
-        }
-      ]
-    },
-    {
-      "name": "rayon",
-      "version": "1.12.0",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "fb39b166781f92d482534ef4b4b1b2568f42613b53e5b6c160e24cfbfa30926d",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/rayon-rs/rayon",
-      "upstream_commit": "c9ced185ae3508246a9eb70c8407a1199bb1b77f",
-      "notice_files": [
-        {
-          "path": "third_party/rayon-1.12.0/LICENSE-APACHE",
-          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
-          "source": "https://crates.io/crates/rayon/1.12.0",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/rayon-1.12.0/LICENSE-MIT",
-          "sha256": "0621878e61f0d0fda054bcbe02df75192c28bde1ecc8289cbd86aeba2dd72720",
-          "source": "https://crates.io/crates/rayon/1.12.0",
-          "registry_path": "LICENSE-MIT"
-        }
-      ]
-    },
-    {
-      "name": "rayon-core",
-      "version": "1.13.0",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "22e18b0f0062d30d4230b2e85ff77fdfe4326feb054b9783a3460d8435c8ab91",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/rayon-rs/rayon",
-      "upstream_commit": "7af20d7692d5decbcb4adcaa079cd607e3e50814",
-      "notice_files": [
-        {
-          "path": "third_party/rayon-core-1.13.0/LICENSE-APACHE",
-          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
-          "source": "https://crates.io/crates/rayon-core/1.13.0",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/rayon-core-1.13.0/LICENSE-MIT",
-          "sha256": "0621878e61f0d0fda054bcbe02df75192c28bde1ecc8289cbd86aeba2dd72720",
-          "source": "https://crates.io/crates/rayon-core/1.13.0",
-          "registry_path": "LICENSE-MIT"
-        }
-      ]
-    },
-    {
-      "name": "regex",
-      "version": "1.13.1",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "f020237b6c8eed93db2e2cb53c00c60a8e1bc73da7d073199a1180401450218d",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/rust-lang/regex",
-      "upstream_commit": "2b527599eb9eea0dcc288c704584f242f26a5c61",
-      "notice_files": [
-        {
-          "path": "third_party/regex-1.13.1/LICENSE-APACHE",
-          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
-          "source": "https://crates.io/crates/regex/1.13.1",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/regex-1.13.1/LICENSE-MIT",
-          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
-          "source": "https://crates.io/crates/regex/1.13.1",
-          "registry_path": "LICENSE-MIT"
-        }
-      ]
-    },
-    {
-      "name": "regex-automata",
-      "version": "0.4.18",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "ad8553b9b26413251cbf30e620595c7a41b3887f03da04579c0e6b0d6a06b4b2",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/rust-lang/regex",
-      "upstream_commit": "e6ad938198e68339a593f85d228f2d44cb54718f",
-      "notice_files": [
-        {
-          "path": "third_party/regex-automata-0.4.18/LICENSE-APACHE",
-          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
-          "source": "https://crates.io/crates/regex-automata/0.4.18",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/regex-automata-0.4.18/LICENSE-MIT",
-          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
-          "source": "https://crates.io/crates/regex-automata/0.4.18",
-          "registry_path": "LICENSE-MIT"
-        }
-      ]
-    },
-    {
-      "name": "regex-syntax",
-      "version": "0.8.11",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [
-        "Unicode-DFS-2016"
-      ],
-      "repository": "https://github.com/rust-lang/regex",
-      "upstream_commit": "140167995737fa11dfe11b8af8b9aa143b790b4e",
-      "notice_files": [
-        {
-          "path": "third_party/regex-syntax-0.8.11/LICENSE-APACHE",
-          "sha256": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
-          "source": "https://crates.io/crates/regex-syntax/0.8.11",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/regex-syntax-0.8.11/LICENSE-MIT",
-          "sha256": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
-          "source": "https://crates.io/crates/regex-syntax/0.8.11",
-          "registry_path": "LICENSE-MIT"
-        },
-        {
-          "path": "third_party/regex-syntax-0.8.11/src/unicode_tables/LICENSE-UNICODE",
-          "sha256": "74db5baf44a41b1000312c673544b3374e4198af5605c7f9080a402cec42cfa3",
-          "source": "https://crates.io/crates/regex-syntax/0.8.11",
-          "registry_path": "src/unicode_tables/LICENSE-UNICODE"
-        }
-      ]
-    },
-    {
-      "name": "ryu",
-      "version": "1.0.23",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "9774ba4a74de5f7b1c1451ed6cd5285a32eddb5cccb8cc655a4e50009e06477f",
-      "declared_license": "Apache-2.0 OR BSL-1.0",
-      "selected_licenses": [
-        "Apache-2.0"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/dtolnay/ryu",
-      "upstream_commit": "f0b52bb194befe6fd242154f2182fafd43a819b8",
-      "notice_files": [
-        {
-          "path": "third_party/ryu-1.0.23/LICENSE-APACHE",
-          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
-          "source": "https://crates.io/crates/ryu/1.0.23",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/ryu-1.0.23/LICENSE-BOOST",
-          "sha256": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
-          "source": "https://crates.io/crates/ryu/1.0.23",
-          "registry_path": "LICENSE-BOOST"
-        }
-      ]
-    },
-    {
-      "name": "same-file",
-      "version": "1.0.6",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "93fc1dc3aaa9bfed95e02e6eadabb4baf7e3078b0bd1b4d7b6b0b68378900502",
-      "declared_license": "Unlicense/MIT",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/BurntSushi/same-file",
-      "upstream_commit": "5799cd323b8eefd17a089c950dac113f66c89c9e",
-      "notice_files": [
-        {
-          "path": "third_party/same-file-1.0.6/COPYING",
-          "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
-          "source": "https://crates.io/crates/same-file/1.0.6",
-          "registry_path": "COPYING"
-        },
-        {
-          "path": "third_party/same-file-1.0.6/LICENSE-MIT",
-          "sha256": "cb3c929a05e6cbc9de9ab06a4c57eeb60ca8c724bef6c138c87d3a577e27aa14",
-          "source": "https://crates.io/crates/same-file/1.0.6",
-          "registry_path": "LICENSE-MIT"
-        },
-        {
-          "path": "third_party/same-file-1.0.6/UNLICENSE",
-          "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
-          "source": "https://crates.io/crates/same-file/1.0.6",
-          "registry_path": "UNLICENSE"
-        }
-      ]
-    },
-    {
-      "name": "serde",
-      "version": "1.0.229",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "4148590afebada386688f18773da617792bf2ef03ffc1e4cbd2b1d45b023e0ba",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/serde-rs/serde",
-      "upstream_commit": "7fc3b4c30c94f73a96ebd1553f2b090d928fc3a8",
-      "notice_files": [
-        {
-          "path": "third_party/serde-1.0.229/LICENSE-APACHE",
-          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
-          "source": "https://crates.io/crates/serde/1.0.229",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/serde-1.0.229/LICENSE-MIT",
-          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
-          "source": "https://crates.io/crates/serde/1.0.229",
-          "registry_path": "LICENSE-MIT"
-        }
-      ]
-    },
-    {
-      "name": "serde_core",
-      "version": "1.0.229",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "67dca2c9c51e58a4791a4b1ed58308b39c64224d349a935ab5039aa360942a48",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/serde-rs/serde",
-      "upstream_commit": "7fc3b4c30c94f73a96ebd1553f2b090d928fc3a8",
-      "notice_files": [
-        {
-          "path": "third_party/serde_core-1.0.229/LICENSE-APACHE",
-          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
-          "source": "https://crates.io/crates/serde_core/1.0.229",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/serde_core-1.0.229/LICENSE-MIT",
-          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
-          "source": "https://crates.io/crates/serde_core/1.0.229",
-          "registry_path": "LICENSE-MIT"
-        }
-      ]
-    },
-    {
-      "name": "serde_derive",
-      "version": "1.0.229",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "e7a5d71263a5a7d47b41f6b3f06ba276f10cc18b0931f1799f710578e2309348",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/serde-rs/serde",
-      "upstream_commit": "7fc3b4c30c94f73a96ebd1553f2b090d928fc3a8",
-      "notice_files": [
-        {
-          "path": "third_party/serde_derive-1.0.229/LICENSE-APACHE",
-          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
-          "source": "https://crates.io/crates/serde_derive/1.0.229",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/serde_derive-1.0.229/LICENSE-MIT",
-          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
-          "source": "https://crates.io/crates/serde_derive/1.0.229",
-          "registry_path": "LICENSE-MIT"
-        }
-      ]
-    },
-    {
-      "name": "serde_json",
-      "version": "1.0.154",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "e7e9cc8b1b85264074fbcc02a88680c4096b1e47df8f739dceb03bf482f04bd6",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/serde-rs/json",
-      "upstream_commit": "20572a6d066958542d79cdd6cf1a7cd9f0c8e1f8",
-      "notice_files": [
-        {
-          "path": "third_party/serde_json-1.0.154/LICENSE-APACHE",
-          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
-          "source": "https://crates.io/crates/serde_json/1.0.154",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/serde_json-1.0.154/LICENSE-MIT",
-          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
-          "source": "https://crates.io/crates/serde_json/1.0.154",
-          "registry_path": "LICENSE-MIT"
-        }
-      ]
-    },
-    {
-      "name": "serde_yaml_ng",
-      "version": "0.10.0",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "7b4db627b98b36d4203a7b458cf3573730f2bb591b28871d916dfa9efabfd41f",
-      "declared_license": "MIT",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/acatton/serde-yaml-ng",
-      "upstream_commit": "45bce7bd7efb754ffc9dc910f3d1bae7edd0adf4",
-      "notice_files": [
-        {
-          "path": "third_party/serde_yaml_ng-0.10.0/LICENSE",
-          "sha256": "4cb6f99bc6158a9feba329a21ac24020c3b2cc6b6597645023adb8ae1371bd74",
-          "source": "https://crates.io/crates/serde_yaml_ng/0.10.0",
-          "registry_path": "LICENSE"
-        }
-      ]
-    },
-    {
-      "name": "shlex",
-      "version": "2.0.1",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "f8fadd59c855ef2080decdef8ff161eb6661b86933c9d82e5ba29dc602a55aba",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/comex/rust-shlex",
-      "upstream_commit": "e82b1411beb7c92871c2c078c9ab415bbcf207ef",
-      "notice_files": [
-        {
-          "path": "third_party/shlex-2.0.1/LICENSE-APACHE",
-          "sha256": "553fffcd9b1cb158bc3e9edc35da85ca5c3b3d7d2e61c883ebcfa8a65814b583",
-          "source": "https://crates.io/crates/shlex/2.0.1",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/shlex-2.0.1/LICENSE-MIT",
-          "sha256": "4455bf75a91154108304cb283e0fea9948c14f13e20d60887cf2552449dea3b1",
-          "source": "https://crates.io/crates/shlex/2.0.1",
-          "registry_path": "LICENSE-MIT"
-        }
-      ]
-    },
-    {
-      "name": "streaming-iterator",
-      "version": "0.1.9",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "2b2231b7c3057d5e4ad0156fb3dc807d900806020c5ffa3ee6ff2c8c76fb8520",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/sfackler/streaming-iterator",
-      "upstream_commit": "69069dc9e46facef6caa79ee48e47420de92633d",
-      "notice_files": [
-        {
-          "path": "third_party/streaming-iterator-0.1.9/LICENSE-APACHE",
-          "sha256": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08",
-          "source": "https://crates.io/crates/streaming-iterator/0.1.9",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/streaming-iterator-0.1.9/LICENSE-MIT",
-          "sha256": "34cb64162194d52a8412e96d8693ebf43a67d019c6b5bd76da3bb377ba7507aa",
-          "source": "https://crates.io/crates/streaming-iterator/0.1.9",
-          "registry_path": "LICENSE-MIT"
-        }
-      ]
-    },
-    {
-      "name": "syn",
-      "version": "3.0.9",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "d78c8dee4c7bf0e14673097256fed6142ce9d3b85a408189d07482442145823b",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/dtolnay/syn",
-      "upstream_commit": "7c44a5565b4421035101cc16184e9af08ab5fc77",
-      "notice_files": [
-        {
-          "path": "third_party/syn-3.0.9/LICENSE-APACHE",
-          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
-          "source": "https://crates.io/crates/syn/3.0.9",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/syn-3.0.9/LICENSE-MIT",
-          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
-          "source": "https://crates.io/crates/syn/3.0.9",
-          "registry_path": "LICENSE-MIT"
-        }
-      ]
-    },
-    {
-      "name": "tree-sitter",
-      "version": "0.25.10",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "78f873475d258561b06f1c595d93308a7ed124d9977cb26b148c2084a4a3cc87",
-      "declared_license": "MIT",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [
-        "Unicode-DFS-2016",
-        "ICU"
-      ],
-      "repository": "https://github.com/tree-sitter/tree-sitter",
-      "upstream_commit": "da6fe9beb4f7f67beb75914ca8e0d48ae48d6406",
-      "notice_files": [
-        {
-          "path": "third_party/tree-sitter-0.25.10/src/unicode/LICENSE",
-          "sha256": "6a18c5fac70d7860b57f5b72b4e2c9a1ba6b3d2741eef7ff9767c5379364f10d",
-          "source": "https://crates.io/crates/tree-sitter/0.25.10",
-          "registry_path": "src/unicode/LICENSE"
-        },
-        {
-          "path": "third_party/tree-sitter-0.25.10/LICENSE",
-          "sha256": "5f9cf9fb6acb1972b35ae29119ce563bb60ec097656bc4b69b9bac2d04c7a147",
-          "source": "https://github.com/tree-sitter/tree-sitter/blob/da6fe9beb4f7f67beb75914ca8e0d48ae48d6406/LICENSE"
-        }
-      ]
-    },
-    {
-      "name": "tree-sitter-kotlin-ng",
-      "version": "1.1.0",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "e800ebbda938acfbf224f4d2c34947a31994b1295ee6e819b65226c7b51b4450",
-      "declared_license": "MIT",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/tree-sitter-grammars/tree-sitter-kotlin",
-      "upstream_commit": "77dd60ea0a9003ce062c9728a513ffe1aaff8c82",
-      "notice_files": [
-        {
-          "path": "third_party/tree-sitter-kotlin-ng-1.1.0/LICENSE",
-          "sha256": "0eea8dc45e89deeb03c7799bbbc7b4688f365fb274562f4540ecfebdea82e727",
-          "source": "https://github.com/tree-sitter-grammars/tree-sitter-kotlin/blob/77dd60ea0a9003ce062c9728a513ffe1aaff8c82/LICENSE"
-        }
-      ]
-    },
-    {
-      "name": "tree-sitter-language",
-      "version": "0.1.9",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "d0af592be68c579aa78a16846bd19422978c3c52e438523d45ff5d1bff1f9d4a",
-      "declared_license": "MIT",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/tree-sitter/tree-sitter",
-      "upstream_commit": "10eb5ac119eec9cb4267a8e035066473983f5f3a",
-      "notice_files": [
-        {
-          "path": "third_party/tree-sitter-language-0.1.9/LICENSE",
-          "sha256": "c5cfb43042b6b72045f4ba997834d0a7786d2793d91680868b5815b39f14fc78",
-          "source": "https://crates.io/crates/tree-sitter-language/0.1.9",
-          "registry_path": "LICENSE"
-        }
-      ]
-    },
-    {
-      "name": "unicode-ident",
-      "version": "1.0.27",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "a2c754d6c33795a1c324727428e5a7dedb5b06195f9890bdbcba760d3e246563",
-      "declared_license": "(MIT OR Apache-2.0) AND Unicode-3.0",
-      "selected_licenses": [
-        "MIT",
-        "Unicode-3.0"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/dtolnay/unicode-ident",
-      "upstream_commit": "c1ac3afb721f3cea6527bc2255340a04d0de3ca0",
-      "notice_files": [
-        {
-          "path": "third_party/unicode-ident-1.0.27/LICENSE-APACHE",
-          "sha256": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
-          "source": "https://crates.io/crates/unicode-ident/1.0.27",
-          "registry_path": "LICENSE-APACHE"
-        },
-        {
-          "path": "third_party/unicode-ident-1.0.27/LICENSE-MIT",
-          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
-          "source": "https://crates.io/crates/unicode-ident/1.0.27",
-          "registry_path": "LICENSE-MIT"
-        },
-        {
-          "path": "third_party/unicode-ident-1.0.27/LICENSE-UNICODE",
-          "sha256": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1",
-          "source": "https://crates.io/crates/unicode-ident/1.0.27",
-          "registry_path": "LICENSE-UNICODE"
-        }
-      ]
-    },
-    {
-      "name": "unsafe-libyaml",
-      "version": "0.2.11",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "673aac59facbab8a9007c7f6108d11f63b603f7cabff99fabf650fea5c32b861",
-      "declared_license": "MIT",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/dtolnay/unsafe-libyaml",
-      "upstream_commit": "a7b8d1fbd93aefbca3003dcb5fcc6a9c2297e968",
-      "notice_files": [
-        {
-          "path": "third_party/unsafe-libyaml-0.2.11/LICENSE-MIT",
-          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
-          "source": "https://crates.io/crates/unsafe-libyaml/0.2.11",
-          "registry_path": "LICENSE-MIT"
-        },
-        {
-          "path": "third_party/unsafe-libyaml-0.2.11/LICENSE-libyaml",
-          "sha256": "c40112449f254b9753045925248313e9270efa36d226b22d82d4cc6c43c57f29",
-          "source": "https://github.com/yaml/libyaml/blob/2c891fc7a770e8ba2fec34fc6b545c672beb37e6/License"
-        }
-      ]
-    },
-    {
-      "name": "walkdir",
-      "version": "2.5.0",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "29790946404f91d9c5d06f9874efddea1dc06c5efe94541a7d6863108e3a5e4b",
-      "declared_license": "Unlicense/MIT",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/BurntSushi/walkdir",
-      "upstream_commit": "4f26be4d450910916ea11533b2efc52b9a6483bc",
-      "notice_files": [
-        {
-          "path": "third_party/walkdir-2.5.0/COPYING",
-          "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
-          "source": "https://crates.io/crates/walkdir/2.5.0",
-          "registry_path": "COPYING"
-        },
-        {
-          "path": "third_party/walkdir-2.5.0/LICENSE-MIT",
-          "sha256": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
-          "source": "https://crates.io/crates/walkdir/2.5.0",
-          "registry_path": "LICENSE-MIT"
-        },
-        {
-          "path": "third_party/walkdir-2.5.0/UNLICENSE",
-          "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
-          "source": "https://crates.io/crates/walkdir/2.5.0",
-          "registry_path": "UNLICENSE"
-        }
-      ]
-    },
-    {
-      "name": "winapi-util",
-      "version": "0.1.11",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "c2a7b1c03c876122aa43f3020e6c3c3ee5c05081c9a00739faf7503aeba10d22",
-      "declared_license": "Unlicense OR MIT",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/BurntSushi/winapi-util",
-      "upstream_commit": "803874c57dc1f10ecd42f7c86d9de72f53818432",
-      "notice_files": [
-        {
-          "path": "third_party/winapi-util-0.1.11/COPYING",
-          "sha256": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
-          "source": "https://crates.io/crates/winapi-util/0.1.11",
-          "registry_path": "COPYING"
-        },
-        {
-          "path": "third_party/winapi-util-0.1.11/LICENSE-MIT",
-          "sha256": "cb3c929a05e6cbc9de9ab06a4c57eeb60ca8c724bef6c138c87d3a577e27aa14",
-          "source": "https://crates.io/crates/winapi-util/0.1.11",
-          "registry_path": "LICENSE-MIT"
-        },
-        {
-          "path": "third_party/winapi-util-0.1.11/UNLICENSE",
-          "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
-          "source": "https://crates.io/crates/winapi-util/0.1.11",
-          "registry_path": "UNLICENSE"
-        }
-      ]
-    },
-    {
-      "name": "windows-link",
-      "version": "0.2.1",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/microsoft/windows-rs",
-      "upstream_commit": "d468916ac27a36fb8a12bafc1bf5c0ec2fe92238",
-      "notice_files": [
-        {
-          "path": "third_party/windows-link-0.2.1/license-apache-2.0",
-          "sha256": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b",
-          "source": "https://crates.io/crates/windows-link/0.2.1",
-          "registry_path": "license-apache-2.0"
-        },
-        {
-          "path": "third_party/windows-link-0.2.1/license-mit",
-          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
-          "source": "https://crates.io/crates/windows-link/0.2.1",
-          "registry_path": "license-mit"
-        }
-      ]
-    },
-    {
-      "name": "windows-sys",
-      "version": "0.61.2",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "ae137229bcbd6cdf0f7b80a31df61766145077ddf49416a728b02cb3921ff3fc",
-      "declared_license": "MIT OR Apache-2.0",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/microsoft/windows-rs",
-      "upstream_commit": "32c3144490c016fe496a0aed769bce60987a2e9d",
-      "notice_files": [
-        {
-          "path": "third_party/windows-sys-0.61.2/license-apache-2.0",
-          "sha256": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b",
-          "source": "https://crates.io/crates/windows-sys/0.61.2",
-          "registry_path": "license-apache-2.0"
-        },
-        {
-          "path": "third_party/windows-sys-0.61.2/license-mit",
-          "sha256": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
-          "source": "https://crates.io/crates/windows-sys/0.61.2",
-          "registry_path": "license-mit"
-        }
-      ]
-    },
-    {
-      "name": "zmij",
-      "version": "1.0.23",
-      "source": "registry+https://github.com/rust-lang/crates.io-index",
-      "checksum": "29666d0abbfad1e3dc4dcf6144730dd3a3ab225bbbdac83319345b1b44ccfc1b",
-      "declared_license": "MIT",
-      "selected_licenses": [
-        "MIT"
-      ],
-      "additional_licenses": [],
-      "repository": "https://github.com/dtolnay/zmij",
-      "upstream_commit": "7b7cc48b58028e8af7be87e94c0c1c8936f1a57c",
-      "notice_files": [
-        {
-          "path": "third_party/zmij-1.0.23/LICENSE-MIT",
-          "sha256": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
-          "source": "https://crates.io/crates/zmij/1.0.23",
-          "registry_path": "LICENSE-MIT"
-        }
-      ]
+      "coordinate": "org.hamcrest:hamcrest-core:1.3",
+      "scope": "test",
+      "declared_licenses": [],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar",
+      "artifact_sha256": "66fdef91e9739348df7a096aa384a5685f4e875584cce89386a7a47251c4d8e9",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3-sources.jar",
+      "pom": "third_party/maven-poms/hamcrest-core-1.3.pom",
+      "notices": "third_party/hamcrest-core-1.3",
+      "artifact_license": "BSD-3-Clause; LICENSE.txt inside JAR"
     }
-  ]
+  ],
+  "upstream_kotlin_notice_archive": {
+    "url": "https://github.com/JetBrains/kotlin/releases/download/v2.2.21/kotlin-compiler-2.2.21.zip",
+    "sha256": "a623871f1cd9c938946948b70ef9170879f0758043885bbd30c32f024e511714",
+    "subtree": "kotlinc/license/",
+    "note": "Full upstream snapshot includes notices for tools and testdata not all present in the JVM parser path."
+  }
 }

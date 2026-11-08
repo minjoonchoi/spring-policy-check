@@ -27,34 +27,18 @@ GPL·AGPL·LGPL·MPL도 상업적 사용 자체가 금지된다는 뜻은 아닙
 프로젝트의 `LICENSE`는 자체 코드에 대한 MIT 라이선스이며 제3자 코드의 라이선스를 바꾸지 않습니다. README의 이름이나 링크만으로 원문 고지를 대신하지 않습니다.
 
 - `THIRD_PARTY_NOTICES.md`: 버전, 선언·선택 조건과 원문 위치.
-- `third_party/dependencies.json`: 검토한 Cargo 의존성의 출처·버전·checksum과 고지 정보.
+- `third_party/dependencies.json`: 검토한 JVM 의존성의 정확한 좌표·Maven POM·artifact checksum·원본 소스와 고지 정보.
 - `third_party/components.json`: 관련 빌드 도구·런타임의 검토 기록.
 - `third_party/**`: 원문 그대로 보존한 라이선스와 관련 고지.
 
 현재 가져온 제3자 소스를 수정하지 않습니다. 수정본을 도입하면 원 고지를 유지하고 변경 내용을 기록합니다. 의존성이나 버전이 바뀌면 위 기록과 고지를 함께 갱신합니다. 배포 압축 파일에는 자체 라이선스와 제3자 고지를 동봉합니다.
 
-## 현재 검토 결과
+## 현재 구현의 의존성
 
-2026-11-08 기준 직접 의존성 8개, 전체 Cargo 의존성 40개를 확인했습니다. 확인된 조건하에서는 현재 사용·배포 방식에 맞지 않아 대체해야 할 라이브러리가 발견되지 않았습니다. 회사별 별도 승인 여부를 대신하는 판단은 아닙니다.
+v0.2는 Gradle JVM 안에서 실행하는 Groovy task입니다. Kotlin compiler embeddable 2.2.21의 PSI API와 SnakeYAML 2.3을 사용하며, 8개의 외부 runtime artifact와 테스트용 JUnit/Hamcrest를 기록했습니다. Gradle API와 Groovy는 호스트 Gradle이 제공합니다.
 
-| 구성요소 | 확인 내용 |
-| --- | --- |
-| tree-sitter 0.25.10 | MIT. 같은 upstream commit에서 누락된 최상위 라이선스를 보완하고 내장 ICU 헤더의 고지도 보존 |
-| tree-sitter-kotlin-ng 1.1.0 | MIT. 같은 upstream commit의 라이선스 원문 보존 |
-| serde / serde_json / rayon 등 | 허용된 MIT 대안 선택 |
-| serde_yaml_ng / unsafe-libyaml | MIT. 변환에 사용한 원 libyaml의 저작권 고지도 보존 |
-| regex-syntax / unicode-ident | crate 조건과 별개로 Unicode 데이터 고지·AND 조건 반영 |
-| foldhash | Zlib. 해당 고지 보존 |
-| Gradle wrapper 8.10.2 | jar에 포함된 Apache-2.0 라이선스 보존 |
-| Rust 표준 라이브러리 1.99.1 | 현재 Linux x86_64 GNU 바이너리에 연결되는 런타임 고지 동봉 |
+Kotlin 컴파일러의 최상위 Apache-2.0 표기만으로 검토를 끝내지 않습니다. 실제 JAR의 GWT/Rhino 클래스(NPL-1.1)와 그 밖의 내장 코드 고지를 확인하고, 해당 릴리스의 전체 라이선스 디렉터리를 보존했습니다. NPL 코드가 현재 파서 실행 경로에서 사용되지 않는다는 사실은 회사의 의존성 승인 조건을 면제하지 않습니다. 회사에서 해당 artifact를 금지한다면 Kotlin 구문 분석 의존성을 대체해야 합니다. 현재 회사 고유의 금지 목록은 제공되지 않았습니다.
 
-Rust의 `COPYRIGHT-library.html`은 여러 플랫폼을 포괄합니다. MPL-2.0 `fortanix-sgx-abi`는 [SGX 전용 의존성](https://github.com/rust-lang/rust/blob/1.99.1/library/std/Cargo.toml)이며 현재 배포하는 Linux GNU 대상에는 포함되지 않습니다. 원문은 보존하며, 다른 배포 대상을 추가할 때 해당 런타임을 확인합니다.
+분석 라이브러리는 수정하거나 플러그인 JAR에 합치지 않고 Gradle이 원본 Maven artifact로 받습니다. 재배포 시 필요한 원문과 소스 제공 정보를 유지합니다. 테스트용 EPL-1.0 JUnit은 제품 JAR에 포함되지 않습니다. 상세 목록과 원본 링크는 `THIRD_PARTY_NOTICES.md`와 `third_party/dependencies.json`을 참조합니다.
 
-Linux 바이너리가 사용하는 시스템 glibc·libgcc_s, JDK, 전체 Gradle 배포판, Rust 컴파일러, CI 실행환경은 배포 압축 파일에 넣지 않습니다. 이를 포함하는 컨테이너나 설치 패키지를 만들면 그 범위의 라이선스도 검토합니다. 개발 도구를 실행하는 경우와 제품에 포함해 재배포하는 경우를 구분합니다.
-
-초기 커밋 `86cd2e4`의 바이너리만 담긴 artifact를 재배포할 때는 이 고지 묶음도 함께 제공해야 합니다. 현재 CI 배포 압축 파일에는 고지를 포함합니다.
-
-## 공식 근거
-
-- [MIT](https://opensource.org/license/mit), [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0), [Zlib](https://opensource.org/license/zlib)
-- [Unicode V3](https://www.unicode.org/license.txt), [Unicode-DFS-2016](https://spdx.org/licenses/Unicode-DFS-2016.html), [ICU](https://spdx.org/licenses/ICU.html)
+라이선스 관리는 도구를 개발하는 책임이며 별도의 license check task를 제공하지 않습니다.

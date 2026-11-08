@@ -22,26 +22,17 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
-      - name: Check Rust format
-        run: cargo fmt --all -- --check
-      - name: Build native checker
-        run: cargo build --release --locked
       - name: Verify rules and Gradle task behavior
         run: python3 scripts/verify-gradle.py
-      - name: Package Linux binary
-        run: |
-          mkdir -p dist
-          tar -czf dist/spring-policy-linux-x86_64.tar.gz \
-            -C target/release spring-policy \
-            -C "$GITHUB_WORKSPACE" LICENSE THIRD_PARTY_NOTICES.md third_party docs/OPEN_SOURCE_POLICY.md
-          cd dist
-          sha256sum spring-policy-linux-x86_64.tar.gz > SHA256SUMS
-      - name: Upload verified binary and reports
+      - name: Package Gradle task implementation
+        run: ./gradlew assemble --configuration-cache
+      - name: Upload verified JVM plugin and reports
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: spring-policy-linux-x86_64
+          name: spring-policy-gradle
           path: |
-            dist/
+            gradle-plugin/build/libs/
+            gradle-plugin/build/reports/tests/
             build/reports/policy/
           if-no-files-found: error
           retention-days: 30

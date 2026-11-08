@@ -1,4 +1,4 @@
-# Executable v0.1 specification. Package names and suffixes are reviewable examples.
+# Executable policy schema v1. Package names and suffixes are reviewable examples.
 version: 1
 exclude-path-patterns:
   - '(^|/)(build|generated)(/|$)'

@@ -1,33 +1,30 @@
-plugins { id 'base' }
+import io.github.minjoonchoi.policy.PolicyCheckTask
 
-def binaryName = System.getProperty('os.name').toLowerCase().contains('windows') ? 'spring-policy.exe' : 'spring-policy'
-def binary = providers.gradleProperty('policyBinary').map { file(it) }.orElse(layout.projectDirectory.file("target/release/${binaryName}").asFile)
-def cargo = providers.gradleProperty('cargoBinary').orElse('cargo')
+plugins {
+    id 'base'
+    id 'io.github.minjoonchoi.spring-policy'
+}
+repositories { mavenCentral() }
 
-tasks.register('policyBuild', Exec) {
-    group = 'build'
-    description = 'Build the Rust binary once. policyCheck never compiles Rust.'
-    inputs.files(fileTree('src'), 'Cargo.toml', 'Cargo.lock')
-    outputs.file(layout.projectDirectory.file("target/release/${binaryName}"))
-    commandLine cargo.get(), 'build', '--release', '--locked'
+// This checker repository demonstrates valid Kotlin input with its default task.
+tasks.named('policyCheck', PolicyCheckTask) {
+    modulePath = ':sample'
+    sourceFiles.setFrom(fileTree('samples/valid') { include '**/*.kt' }, fileTree('samples/common') { include '**/*.kt' })
+    reportFile = layout.buildDirectory.file('reports/policy/valid.json')
 }
-tasks.register('policySpecTest', Exec) {
-    group = 'verification'
-    description = 'Run the executable rule specification against real Kotlin fixtures.'
-    commandLine cargo.get(), 'test', '--locked'
-}
-['policyCheck':'violations', 'policyGoodCheck':'valid', 'policyWarningCheck':'warnings'].each { taskName, example ->
-    tasks.register(taskName, Exec) {
-        group = 'verification'
-        description = "Run the prebuilt Rust binary on samples/${example}."
-        inputs.file(binary).withPathSensitivity(PathSensitivity.NONE)
-        inputs.file('policy.yml').withPathSensitivity(PathSensitivity.RELATIVE)
-        inputs.files(fileTree("samples/${example}") { include '**/*.kt' }, fileTree('samples/common') { include '**/*.kt' }).withPathSensitivity(PathSensitivity.RELATIVE)
-        inputs.property('modulePath', ':sample')
-        outputs.file(layout.buildDirectory.file("reports/policy/${example}.json"))
-        commandLine binary.get(), 'check', '--config', 'policy.yml', '--module', ':sample',
-            '--root', "samples/${example}", '--root', 'samples/common',
-            '--report', layout.buildDirectory.file("reports/policy/${example}.json").get().asFile
+['policyWarningCheck': 'warnings', 'policyViolationCheck': 'violations'].each { taskName, sample ->
+    tasks.register(taskName, PolicyCheckTask) {
+        description = "Check samples/${sample} using the Gradle JVM."
+        modulePath = ':sample'
+        sourceFiles.from(fileTree("samples/${sample}") { include '**/*.kt' }, fileTree('samples/common') { include '**/*.kt' })
+        reportFile = layout.buildDirectory.file("reports/policy/${sample}.json")
     }
 }
-tasks.named('check') { dependsOn 'policySpecTest', 'policyGoodCheck' }
+tasks.register('policyGoodCheck') { group = 'verification'; dependsOn 'policyCheck' }
+tasks.register('policySpecTest') {
+    group = 'verification'
+    description = 'Run Kotlin source specifications, query tests and Gradle TestKit tests.'
+    dependsOn gradle.includedBuild('gradle-plugin').task(':test')
+}
+tasks.named('check') { dependsOn 'policySpecTest' }
+tasks.named('assemble') { dependsOn gradle.includedBuild('gradle-plugin').task(':assemble') }

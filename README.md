@@ -1,60 +1,72 @@
-# Spring Policy Check — Rust 실행형 규칙 명세 v0.1
+# Spring Policy Check — Gradle 커스텀 task
 
-Rust-based static policy checker for Spring projects, integrated into Gradle tasks.
+Kotlin Spring 저장소의 규칙을 YAML로 정의하고 **Gradle JVM 안에서 정적 분석하는 커스텀 task**입니다. 실행 구현은 Groovy의 `DefaultTask`이며, Gradle Worker API의 `classLoaderIsolation`으로 Kotlin PSI 파서와 YAML 라이브러리를 프로젝트의 빌드 클래스패스에서 분리합니다.
 
-Kotlin Spring 저장소의 규칙을 YAML로 정의하고, 실제 Kotlin 소스를 Rust 바이너리로 검사하는 검증용 초안입니다. Gradle은 이미 빌드된 바이너리 실행과 입출력 추적을 담당합니다. 검사 경로에 detekt, Kotlin compiler, Spring 애플리케이션 실행은 없습니다.
+별도 Rust 바이너리, Cargo, OS/CPU별 실행 파일, 외부 분석 프로세스가 필요하지 않습니다. Kotlin 컴파일러 라이브러리에서는 구문 분석 API만 사용하며 대상 프로젝트를 컴파일하거나 Spring·DB를 실행하지 않습니다. Gradle 자체에는 Spring 정책 분석기가 없으므로 정책 판정 로직은 이 저장소가 제공합니다.
 
-패키지, 모듈 이름과 suffix는 검토용 예시입니다. 현재 사용자 레포에 적용하거나, 실제 DB·Security FilterChain을 구동한 결과는 아닙니다.
+패키지, 모듈 이름과 suffix는 검토용 예시입니다. 현재 분석은 명시된 타입과 소스 인덱스를 사용하는 제한된 정적 분석이며 Kotlin 컴파일러의 전체 타입 추론·심볼 해석을 수행하지 않습니다.
 
-CLI와 바이너리 이름은 `spring-policy`입니다.
+## 실행
+
+JDK 17 이상이 필요합니다. 검증 기준은 Gradle 8.10.2 / JDK 21입니다. 최초 실행에서는 Gradle과 JVM 의존성을 다운로드하고, 포함된 task 구현을 빌드합니다. 이후 변경하지 않은 빌드 로직은 재사용합니다.
+
+```bash
+# 정상 샘플 검사
+./gradlew policyCheck
+
+# 전체 규칙 테스트와 정상 샘플 검사
+./gradlew check
+
+# 경고를 출력하고 성공
+./gradlew policyWarningCheck
+
+# 위반 샘플을 검사하고 의도적으로 실패
+./gradlew policyViolationCheck
+
+# 테스트만 실행 / 공통 JAR 빌드
+./gradlew policySpecTest
+./gradlew assemble
+```
+
+`policyGoodCheck`는 `policyCheck`의 별칭입니다. v0.1에서 실패 데모였던 루트 `policyCheck`는 정상 데모로 바뀌었고, 실패 데모는 `policyViolationCheck`로 분리했습니다. 실제 프로젝트에 적용한 `policyCheck`는 기본적으로 해당 모듈의 `src/main/kotlin`을 검사합니다.
+
+## 기존 Spring 프로젝트에 적용
+
+아직 Gradle Plugin Portal에 게시하지 않았습니다. 우선 소스 체크아웃을 포함 빌드로 연결할 수 있습니다.
+
+```kotlin
+// settings.gradle.kts
+pluginManagement {
+    includeBuild("../spring-policy-check/gradle-plugin")
+}
+```
+
+```kotlin
+// 검사할 모듈의 build.gradle.kts
+import io.github.minjoonchoi.policy.PolicyCheckTask
+
+plugins {
+    id("io.github.minjoonchoi.spring-policy")
+}
+repositories { mavenCentral() }
+
+tasks.named<PolicyCheckTask>("policyCheck") {
+    policyFile.set(rootProject.layout.projectDirectory.file("policy.yml"))
+    // modulePath는 project.path, sourceFiles는 src/main/kotlin이 기본값입니다.
+}
+```
+
+루트에 `policy.yml`을 두고 `scope.modules`를 실제 모듈 경로와 맞춥니다. 예를 들어 `:api:policyCheck`는 기본적으로 `:api` 규칙을 사용합니다. `check` task가 존재하면 `policyCheck`가 자동 연결됩니다. 플러그인은 적용한 프로젝트의 저장소 설정을 사용하므로 사내 Maven 프록시도 사용할 수 있습니다.
+
+배포 단위는 플랫폼 공통 플러그인 JAR입니다. `./gradlew :gradle-plugin:publishToMavenLocal`로 로컬 Maven 저장소에 플러그인 마커와 JAR을 게시할 수 있습니다. 사내 Maven 게시 저장소는 조직의 설정을 추가해야 합니다. 분석 라이브러리는 Gradle 의존성으로 다운로드·캐시하며 JAR에 합쳐 넣지 않습니다.
 
 ## 기업 사용과 라이선스
 
-프로젝트는 MIT입니다. 개발 시 직접·간접 의존성의 상업적 사용·수정·배포 조건을 확인하고, 회사의 사용 조건과 맞지 않는 라이브러리는 대체합니다. 자세한 내용은 [오픈소스 사용·고지·배포 기준](docs/OPEN_SOURCE_POLICY.md)에 정리했습니다.
-
-[제3자 고지 목록](THIRD_PARTY_NOTICES.md)에 확인한 의존성 40개의 버전·출처·선택한 조건을 기록하고 원문은 `third_party/`에 보존합니다. 배포 tar.gz에는 프로젝트 라이선스와 제3자 고지를 함께 제공합니다. 회사별 별도 승인 기준은 해당 회사의 기준을 따릅니다.
-
-## 바로 실행
-
-필요 환경: 소스에서 빌드할 때 Rust/Cargo와 C toolchain. Gradle을 사용할 때 JDK 17 이상. 검증 환경은 Rust 1.99.1, Gradle 8.10.2, Java 21, Linux x86_64입니다. 최초 의존성 다운로드는 네트워크가 필요하고, 배포 바이너리의 검사 실행은 네트워크를 사용하지 않습니다.
-
-```bash
-# 도구 개발자의 최초 빌드. 검사할 때마다 수행하지 않습니다.
-cargo build --release --locked
-
-# 실제 Kotlin 입력과 예상 진단을 비교하는 테스트
-cargo test --locked
-# 같은 테스트를 Gradle task에서 실행
-./gradlew policySpecTest
-
-# 정상 예제: 성공
-./gradlew policyGoodCheck
-
-# 경고 예제: 진단을 출력하고 성공
-./gradlew policyWarningCheck
-
-# 의도적으로 규칙을 위반한 예제: 에러를 출력하고 실패
-./gradlew policyCheck
-```
-
-Rust 빌드를 Gradle로 요청할 경우 `./gradlew policyBuild`를 명시적으로 실행합니다. `policyCheck`는 빌드 task에 의존하지 않습니다. 배포 시 OS/CPU별 미리 빌드한 파일을 제공하는 구조입니다.
-
-실행 파일은 위 명령으로 각 OS에서 빌드합니다. Git에는 소스와 Gradle wrapper를 저장하고, GitHub Actions는 Linux x86_64 릴리스 바이너리를 검증한 뒤 artifact로 제공합니다. Linux 바이너리는 동적 링크되므로 다른 배포판의 libc 호환성은 별도로 확인해야 합니다.
-
-```bash
-# 별도 배포한 바이너리를 사용하는 경우
-./gradlew policyGoodCheck -PpolicyBinary=/absolute/path/to/spring-policy
-
-# Gradle 없이 직접 실행
-target/release/spring-policy check \
-  --config policy.yml --module :sample \
-  --root samples/warnings --root samples/common \
-  --report build/reports/policy/direct.json
-```
+프로젝트 자체는 MIT입니다. 새 의존성의 정확한 버전과 포함된 제3자 코드·고지를 검토하고 [개발 시 오픈소스 사용 기준](docs/OPEN_SOURCE_POLICY.md) 및 [제3자 고지](THIRD_PARTY_NOTICES.md)에 기록합니다. Kotlin의 최상위 Apache-2.0 표기 외에 컴파일러 JAR에 포함된 코드의 조건도 별도로 기록합니다. 라이선스 검사는 제품 task가 아닙니다.
 
 ## 규칙 명세 방식
 
-실제로 읽고 실행하는 설정은 `policy.yml`입니다. `version: 1`에 해당하는 필드를 Rust의 엄격한 설정 타입으로 역직렬화합니다. 알 수 없는 키, 잘못된 정규식, 중복 rule ID, 지원하지 않는 버전은 실행 오류입니다.
+실제로 읽고 실행하는 설정은 `policy.yml`입니다. `version: 1`에 해당하는 필드를 SnakeYAML의 안전한 로더로 읽고 허용 필드·타입을 엄격히 검증합니다. 중복 YAML 키와 사용자 정의 객체 태그도 거부합니다. 알 수 없는 키, 잘못된 정규식, 중복 rule ID, 지원하지 않는 버전은 실행 오류입니다.
 
 ```yaml
 version: 1
@@ -79,13 +91,13 @@ rules:
 | `id` | 설정 전체에서 고유한 규칙 ID |
 | `severity` | `error`, `warning`, `info`. 명확한 위반·제안의 심각도 |
 | `scope.modules` | Gradle이 전달하는 `project.path`와 정확히 일치하는 문자열 목록. glob 아님 |
-| `scope.package-pattern` | Kotlin `package` 선언에 적용하는 Rust 정규식. 전체 일치는 `^…$` 사용 |
+| `scope.package-pattern` | Kotlin `package` 선언에 적용하는 Java 정규식. 전체 일치는 `^…$` 사용 |
 | `check.type` | 구현된 검사기 종류. 임의의 자연어 규칙을 실행하는 필드가 아님 |
 | `message` | 판정 근거를 설명하는 공통 문구 |
 | `suggestion` | 해결 방향. 쿼리 검사기는 계산한 후보 코드를 뒤에 붙임 |
 | `exclude-path-patterns` | 입력 경로에 대한 정규식. 파싱 전에 제외 |
 
-선언 종류·API·쿼리를 해석하는 로직은 Rust에 있고, 적용 범위·이름·허용 대상·심각도·설명은 YAML로 바꿉니다. 새로운 쿼리 문법이나 분석 종류를 추가하려면 Rust 검사기와 테스트를 함께 추가해야 합니다.
+선언 종류·API·쿼리를 해석하는 로직은 Groovy 검사기에 있고, 적용 범위·이름·허용 대상·심각도·설명은 YAML로 바꿉니다. 새로운 쿼리 문법이나 분석 종류를 추가하려면 JVM 검사기와 테스트를 함께 추가해야 합니다.
 
 ## 제공한 규칙
 
@@ -182,55 +194,55 @@ select u.* from users u where u.user_email = :email
 
 DB 전용 문법, 복잡한 JOIN·집계·함수, converter, 관계·상속·복잡한 매핑, 확인할 수 없는 테이블·컬럼은 SKIP합니다. 단순 매핑이 확인되어도 **런타임 필터·자동 converter·DB 실행계획·결과 동일성은 검증하지 않았으므로 INFO 수준의 검토 후보**입니다.
 
-## 판정·CLI 계약
+## 판정 및 Gradle task 계약
 
-| 상태 | 의미 | 기본 exit code |
+| 상태 | 의미 | Gradle 결과 |
 | --- | --- | --- |
-| `violation` | 지원하는 명확한 규칙 위반 | error가 하나라도 있으면 1 |
-| `suggestion` | 더 선호하는 구현의 검토 후보 | warning/info만 있으면 0 |
-| `skipped` | 해당 후보를 찾았지만 필요한 정보나 지원 문법이 부족함 | info로 표시, 0 |
-| 진단 없음 | 적용한 규칙에서 진단이 없음. 완전한 의미 검증 성공을 뜻하지 않음 | 0 |
-| 분석 실행 오류 | 설정·구문·입출력·중복 클래스·빈 입력 오류 | 2 |
+| `violation` | 지원하는 명확한 규칙 위반 | severity가 error이면 실패 |
+| `suggestion` | 선호하는 구현의 검토 후보 | 설정한 severity가 error가 아니면 성공 |
+| `skipped` | 후보를 찾았지만 정보나 지원 문법이 부족함 | info로 표시, 성공 |
+| 진단 없음 | 적용한 규칙에서 진단 없음 | 성공 |
+| 분석 실행 오류 | 설정·구문·입출력·중복 클래스·빈 입력 오류 | `ANALYSIS_ERROR`로 실패 |
 
-JSON 리포트에는 `rule`, `status`, `severity`, `code`, `file`, 1부터 시작하는 Unicode 문자 기준 `line`·`column`, `evidence`, `message`, `suggestion`이 들어갑니다. SKIP에는 수정 제안을 붙이지 않습니다. 적용된 규칙 ID 목록도 기록하여 잘못된 모듈·패키지 범위 설정을 확인할 수 있습니다. 발견하지 못한 임의의 의미적 상황까지 모든 SKIP으로 열거하는 도구는 아닙니다.
+정책 에러는 리포트를 기록한 뒤 `POLICY_VIOLATION`으로 task를 실패시킵니다. Gradle 프로세스 종료 코드는 성공 0, 실패 1이며 이전 Rust CLI의 별도 종료 코드 2는 사용하지 않습니다. task 실행 중 분석 오류가 발생하면 이전 리포트를 지워 오래된 성공 결과가 남지 않게 합니다. Gradle 자체의 입력 검증 단계에서 실패하면 task action은 실행되지 않으므로 기존 리포트가 남을 수 있습니다.
+
+JSON의 schema-version은 1로 유지합니다. `rule`, `status`, `severity`, `code`, `file`, 1부터 시작하는 Unicode 문자 기준 `line`·`column`, `evidence`, `message`, `suggestion`과 적용된 규칙 ID를 기록합니다. 경로는 해당 Gradle 프로젝트 기준입니다. 기본 위치는 `build/reports/policy/policyCheck.json`, 이 저장소의 데모는 `valid.json`, `warnings.json`, `violations.json`입니다.
+
+SKIP은 수정 제안을 포함하지 않습니다. 진단이 없다고 전체 의미 검증을 통과했다는 뜻은 아니며 발견하지 못한 상황까지 SKIP으로 모두 나열하지 않습니다.
 
 ## 테스트 자료
 
-- `tests/fixtures/<case>/Example.kt`: 실제 Kotlin 입력.
-- `tests/fixtures/<case>/Model.kt`: 필요한 경우 엔티티·공통 타입 입력.
+- `tests/fixtures/<case>/Example.kt`, 필요한 경우 `Model.kt`: 실제 Kotlin 입력.
 - `tests/fixtures/<case>/expected.json`: 기대 rule·code·severity·status·후보 문자열.
-- `tests/acceptance.rs`: 67개 Kotlin source acceptance test.
-- `src/query.rs`: 쿼리 grammar·변환과 제외 조건 8개 test.
-- `tests/robustness.rs`: 설정 오류·실패 코드·병렬 결과 안정성 등 15개 test.
-- `TEST-MATRIX.md`: 전체 source acceptance case 목록.
-- `verification/`: 실제 실행 결과와 성능 측정 데이터.
+- `gradle-plugin/src/test/groovy/.../AcceptanceTest.groovy`: 기존 67개 Kotlin 사례를 변경 없이 실행.
+- `QueryShapeTest.groovy`: 쿼리 문법과 변환 8개 테스트.
+- `RobustnessTest.groovy`: 설정·파싱·정렬·Unicode 위치·변수 가림 등 16개 테스트.
+- `GradleTaskTest.groovy`: TestKit으로 실제 Groovy/Kotlin DSL 소비 프로젝트, 성공·경고·실패, Configuration Cache, UP-TO-DATE, 입력 변경, 빈 입력과 오래된 리포트 제거 확인.
+- `TEST-MATRIX.md`: 소스 사례별 기대 결과.
 
-테스트는 정규화된 가짜 분석 결과를 입력하지 않고 **Kotlin 원문 → 구문 트리 → source index·규칙 → 진단** 경로를 실행합니다. JVM 컴파일러·실제 Spring 컨텍스트·DB를 실행하는 integration test는 포함하지 않았습니다.
+총 100개 테스트(67 + 8 + 16 + TestKit 9개)가 **Kotlin 원문 → PSI → 소스 인덱스·규칙 → 진단** 경로와 Gradle 실행을 검증합니다. 실제 Spring 컨텍스트와 DB를 실행하지는 않습니다.
 
-### GitHub Actions
+CI는 JDK를 준비한 뒤 `scripts/verify-gradle.py`로 테스트·플러그인 검증·정상·경고·오류 데모를 확인합니다. 성공하면 공통 JAR과 테스트·진단 리포트를 artifact로 제공합니다. Rust 빌드나 플랫폼별 바이너리 패키징 단계는 없습니다.
 
-`.github/workflows/ci.yml`은 push와 PR마다 Rust 포맷·릴리스 빌드를 확인하고, `scripts/verify-gradle.py`로 90개 테스트와 정상·경고·오류 Gradle task를 실행합니다. 의도적인 오류 예제는 실패 종료와 예상 진단을 모두 확인해야 CI가 통과합니다.
+## 실행 구조와 성능
 
-성공한 실행의 `spring-policy-linux-x86_64` artifact에는 실행 권한을 보존한 바이너리 tar.gz, SHA-256 체크섬과 JSON 리포트가 포함됩니다. `verification/`은 초기 프로토타입 측정 기록이며, 최신 커밋의 검증 결과는 해당 Actions 실행을 기준으로 확인합니다.
+`PolicyCheckTask`가 입력과 출력을 선언하고 `AnalyzeWorkAction`에 분석을 위임합니다. classloader isolation은 별도 분석 프로세스를 띄우지 않고 Gradle JVM 안에서 라이브러리 클래스를 분리합니다. task에는 `Project`를 실행 단계에서 캡처하지 않아 Configuration Cache와 함께 사용할 수 있습니다.
 
-## Gradle 연결·속도
+정책 파일·Kotlin 소스·모듈 경로·분석 라이브러리 클래스패스를 입력으로, JSON을 출력으로 선언합니다. 변경이 없으면 UP-TO-DATE로 생략합니다. Gradle의 의존성 캐시가 준비되어 있으면 `--offline`으로 실행할 수 있습니다. 리포트 경로 특성상 원격 build cache는 활성화하지 않았습니다.
 
-`gradle/spring-policy.gradle`은 기존 Spring 모듈에 적용할 최소 연결 예시입니다. 바이너리와 policy 파일을 루트에 배치하고 `scope.modules`를 실제 `project.path`에 맞추세요. 여러 소스 루트가 필요한 경우 `--root`를 추가합니다. 다른 모듈의 엔티티 정보도 필요하면 해당 소스를 함께 제공하는 방식으로 확장해야 합니다. 현재 예시 script는 그 모듈의 `src/main/kotlin`만 전달합니다.
+현재 한 task는 입력 파일 전체를 순서대로 분석합니다. 파일별 영속 캐시나 Kotlin 전체 타입 해석을 제공하지 않으며 다른 Gradle 모듈의 엔티티를 자동 수집하지 않습니다. 입력 파일에는 모두 해당 task의 modulePath가 적용됩니다. PSI 환경은 작업 종료 시 해제합니다. 최초 파서 로딩과 Gradle 설정 비용이 있으므로 이전 Rust 벤치마크를 새 구현의 성능으로 사용하지 않습니다.
 
-검사 task는 바이너리·YAML·Kotlin 입력·모듈 경로를 inputs로, JSON을 output으로 선언합니다. 변경이 없으면 Gradle이 `UP-TO-DATE`로 생략합니다. Configuration Cache 재사용도 검증했습니다. 파일이 바뀌어 다시 실행되면 현재 구현은 주어진 소스 전체를 다시 분석합니다. 내부 파일별 영속 캐시·remote build cache·변경 영향도 분석은 아직 구현하지 않았습니다.
+## 구현 경계
 
-Rust에서 파일별 파싱·분석을 병렬 실행하고 결과는 경로·위치·rule ID로 정렬합니다. 바이너리 자체는 JVM을 시작하지 않지만, `./gradlew`의 시작·설정 비용은 별도로 존재합니다. `scripts/benchmark.py`는 그 차이를 분리해서 측정합니다. 수치는 `verification/benchmark.json`을 확인하세요.
+- Kotlin만 지원하며 Java 소스 분석은 아직 없습니다.
+- 기존 NAME/CQ/AUTH/JPA 규칙의 제한된 판정 범위를 유지합니다.
+- 일반 함수의 반환 타입 추론, 외부 JAR의 타입 계층, 전체 호출 그래프·데이터 흐름, Spring FilterChain 등록, DB 쿼리 결과 동등성은 검증하지 않습니다.
+- 쿼리 제안은 자동 수정이 아닙니다. 알려진 복잡한 매핑은 보수적으로 SKIP합니다.
+- 새로운 분석 종류는 Groovy 검사기와 테스트를 함께 추가해야 합니다. 기존 종류의 범위·패턴·심각도·허용 API는 YAML로 변경합니다.
 
-## 구현 기반과 추가할 범위
+## 공식 자료
 
-구문 파싱: Tree-sitter Kotlin NG 1.1.0. import와 명시적 타입, 소스 안의 클래스·속성·상속을 제한적으로 해석하는 Rust index. Kotlin 컴파일러와 동등한 타입 분석은 아닙니다. parser가 Kotlin 입력을 해석하지 못하면 오류 exit 2로 끝납니다. 해당 grammar가 최종 한 줄 멤버의 닫는 중괄호 앞에 만드는 가상 `_class_member_semi` 누락만 좁게 허용하며, 그 밖의 error recovery는 통과시키지 않습니다.
-
-다음 확장은 실제 레포의 오탐·미탐 사례를 fixture로 추가하면서 진행합니다: Kotlin 타입 추론/오버로드·data flow, module classpath metadata, FilterChain 등록 검증, 읽기·쓰기 효과 분석, 더 넓은 JPQL/SQL grammar, baseline·사유 있는 예외, SARIF, OS별 배포 자동화. 이 파일의 구현 범위와 구별해 관리합니다.
-
-## 참고한 공식 자료
-
-- [Tree-sitter Rust bindings](https://github.com/tree-sitter/tree-sitter/tree/master/lib/binding_rust)
-- [Tree-sitter Kotlin grammar](https://github.com/tree-sitter-grammars/tree-sitter-kotlin)
-- [Gradle incremental build](https://docs.gradle.org/current/userguide/incremental_build.html)
+- [Gradle custom tasks](https://docs.gradle.org/8.10.2/userguide/implementing_custom_tasks.html)
+- [Gradle Worker API](https://docs.gradle.org/8.10.2/userguide/worker_api.html)
+- [Kotlin PSI](https://github.com/JetBrains/kotlin/tree/v2.2.21/compiler/psi)
 - [Spring Data JPA query methods](https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html)
-- [Spring Security bearer token architecture](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/index.html)

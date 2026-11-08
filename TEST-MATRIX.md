@@ -1,6 +1,6 @@
 # Kotlin 소스 인수 테스트 목록
 
-각 행은 별도의 Rust test입니다. 입력 `.kt`와 `expected.json`이 같은 fixture 디렉터리에 있습니다.
+각 행은 별도의 JVM JUnit test입니다. 입력 `.kt`와 `expected.json`이 같은 fixture 디렉터리에 있습니다.
 
 | Case | Rule | Module | Expected |
 | --- | --- | --- | --- |

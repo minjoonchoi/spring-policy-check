@@ -23,10 +23,10 @@
 hs_err_pid*
 replay_pid*
 
-# Rust and Gradle build outputs
+# Gradle build outputs
 /target/
-/build/
-/.gradle/
+build/
+.gradle/
 /dist/
 /bin/
 __pycache__/

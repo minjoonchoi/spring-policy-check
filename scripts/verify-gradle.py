@@ -23,8 +23,8 @@ def diagnostics(sample):
 
 
 def main():
-    if run("policySpecTest", "policyGoodCheck", "policyWarningCheck") != 0:
-        raise RuntimeError("Rust tests or successful Gradle examples failed")
+    if run("check", "policyWarningCheck", ":gradle-plugin:validatePlugins") != 0:
+        raise RuntimeError("JVM tests or successful Gradle examples failed")
     if diagnostics("valid"):
         raise RuntimeError("The valid sample produced unexpected diagnostics")
     warnings = diagnostics("warnings")
@@ -35,7 +35,7 @@ def main():
 
     report = ROOT / "build" / "reports" / "policy" / "violations.json"
     report.unlink(missing_ok=True)
-    if run("policyCheck") != 1:
+    if run("policyViolationCheck") != 1:
         raise RuntimeError("The policy-error Gradle example must exit 1")
     actual = sorted((d["rule"], d["code"], d["severity"]) for d in diagnostics("violations"))
     expected = sorted([
@@ -45,7 +45,7 @@ def main():
     ])
     if actual != expected:
         raise RuntimeError(f"Unexpected error-sample diagnostics: {actual}")
-    print("Verified: 90 Rust tests and Gradle success/warning/policy-error outcomes.")
+    print("Verified: JVM rule specifications and Gradle success/warning/policy-error outcomes.")
 
 
 if __name__ == "__main__":
