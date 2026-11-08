@@ -1,8 +1,0 @@
-// Expose gradle-plugin with pluginManagement.includeBuild in settings.gradle first.
-// Prefer applying id 'io.github.minjoonchoi.spring-policy' in the module's plugins block.
-apply plugin: 'io.github.minjoonchoi.spring-policy'
-
-tasks.named('policyCheck') {
-    policyFile = rootProject.layout.projectDirectory.file('policy.yml')
-    // sourceFiles defaults to src/main/kotlin; modulePath defaults to project.path.
-}

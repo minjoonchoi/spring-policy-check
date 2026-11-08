@@ -85,6 +85,33 @@
         }
       ],
       "review_notes": "Top-level action license and exact reference reviewed; the complete hosted runner environment is outside the distributable inventory."
+    },
+    {
+      "id": "kotlin-gradle-plugin",
+      "version": "2.2.21",
+      "scope": "Build implementation and tests only; gradle88 variant on Gradle 8.10.2; not bundled",
+      "licenses": [
+        "Apache-2.0",
+        "MIT",
+        "BSD-3-Clause"
+      ],
+      "source": "https://github.com/JetBrains/kotlin/tree/v2.2.21/libraries/tools/kotlin-gradle-plugin",
+      "inventory": "third_party/dependencies.json",
+      "review_notes": "Exact resolved Maven artifacts and embedded dependencies reviewed. Kotlin runtime compiler retains separately documented NPL-1.1 code. No third-party sources modified. Build dependencies are not published as plugin runtime dependencies.",
+      "notice_files": [
+        {
+          "path": "third_party/kotlin-gradle-plugin-2.2.21/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "path": "third_party/kotlin-gradle-plugin-2.2.21/LICENSE.txt",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "third_party/kotlin-gradle-plugin-2.2.21/NOTICE.txt",
+          "sha256": "28a309fd415da6e802ecf85061a451f7ac4353f3610f2982f7af29e9d1529289"
+        }
+      ]
     }
   ]
 }

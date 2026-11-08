@@ -1,0 +1,2 @@
+pluginManagement { includeBuild("gradle-plugin") }
+rootProject.name = "spring-policy-check"

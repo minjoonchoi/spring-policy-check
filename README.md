@@ -1,6 +1,6 @@
 # Spring Policy Check — Gradle 커스텀 task
 
-Kotlin Spring 저장소의 규칙을 YAML로 정의하고 **Gradle JVM 안에서 정적 분석하는 커스텀 task**입니다. 실행 구현은 Groovy의 `DefaultTask`이며, Gradle Worker API의 `classLoaderIsolation`으로 Kotlin PSI 파서와 YAML 라이브러리를 프로젝트의 빌드 클래스패스에서 분리합니다.
+Kotlin Spring 저장소의 규칙을 YAML로 정의하고 **Gradle JVM 안에서 정적 분석하는 커스텀 task**입니다. 빌드 스크립트는 **Kotlin DSL(`.gradle.kts`)**, task·분석기·테스트는 **Kotlin(`.kt`)**으로 구현했습니다. `DefaultTask`에서 Gradle Worker API의 `classLoaderIsolation`으로 Kotlin PSI 파서와 YAML 라이브러리를 프로젝트의 빌드 클래스패스에서 분리합니다.
 
 별도 Rust 바이너리, Cargo, OS/CPU별 실행 파일, 외부 분석 프로세스가 필요하지 않습니다. Kotlin 컴파일러 라이브러리에서는 구문 분석 API만 사용하며 대상 프로젝트를 컴파일하거나 Spring·DB를 실행하지 않습니다. Gradle 자체에는 Spring 정책 분석기가 없으므로 정책 판정 로직은 이 저장소가 제공합니다.
 
@@ -30,6 +30,19 @@ JDK 17 이상이 필요합니다. 검증 기준은 Gradle 8.10.2 / JDK 21입니�
 
 `policyGoodCheck`는 `policyCheck`의 별칭입니다. v0.1에서 실패 데모였던 루트 `policyCheck`는 정상 데모로 바뀌었고, 실패 데모는 `policyViolationCheck`로 분리했습니다. 실제 프로젝트에 적용한 `policyCheck`는 기본적으로 해당 모듈의 `src/main/kotlin`을 검사합니다.
 
+## Kotlin DSL 구현 구성
+
+| 파일 | 역할 |
+| --- | --- |
+| `settings.gradle.kts` | 플러그인 포함 빌드 연결 |
+| `build.gradle.kts` | 정상·경고·위반 샘플 task와 검증 task 설정 |
+| `gradle-plugin/build.gradle.kts` | Kotlin 컴파일, 플러그인 JAR, 테스트·게시 설정 |
+| `gradle-plugin/src/main/kotlin/.../PolicyCheckTask.kt` | Gradle 입력·출력과 Worker 실행 |
+| `gradle-plugin/src/main/kotlin/.../PolicyEngine.kt` | 이름·인증 경계·JPA 규칙 판정 |
+| `policy.yml` | 프로젝트별 규칙 범위·패턴·심각도 설정 |
+
+Kotlin Gradle Plugin 2.2.21로 구현 코드를 빌드합니다. Gradle 8.10.2의 Kotlin DSL에서도 task 타입을 읽을 수 있도록 공개 클래스의 Kotlin language/API 버전은 1.9, JVM target은 17로 맞췄습니다. 소비 프로젝트에는 별도의 Kotlin 플러그인을 적용할 필요가 없습니다. Groovy DSL 소비 프로젝트도 계속 사용할 수 있습니다.
+
 ## 기존 Spring 프로젝트에 적용
 
 아직 Gradle Plugin Portal에 게시하지 않았습니다. 우선 소스 체크아웃을 포함 빌드로 연결할 수 있습니다.
@@ -56,7 +69,7 @@ tasks.named<PolicyCheckTask>("policyCheck") {
 }
 ```
 
-루트에 `policy.yml`을 두고 `scope.modules`를 실제 모듈 경로와 맞춥니다. 예를 들어 `:api:policyCheck`는 기본적으로 `:api` 규칙을 사용합니다. `check` task가 존재하면 `policyCheck`가 자동 연결됩니다. 플러그인은 적용한 프로젝트의 저장소 설정을 사용하므로 사내 Maven 프록시도 사용할 수 있습니다.
+루트에 `policy.yml`을 두고 `scope.modules`를 실제 모듈 경로와 맞춥니다. 예를 들어 `:api:policyCheck`는 기본적으로 `:api` 규칙을 사용합니다. `check` task가 존재하면 `policyCheck`가 자동 연결됩니다. 플러그인은 적용한 프로젝트의 저장소 설정을 사용하므로 사내 Maven 프록시도 사용할 수 있습니다. 기존 `gradle/spring-policy.gradle` 적용 예제는 제거했습니다. 위와 같이 `plugins` 블록과 타입이 지정된 `tasks.named<PolicyCheckTask>`로 설정합니다.
 
 배포 단위는 플랫폼 공통 플러그인 JAR입니다. `./gradlew :gradle-plugin:publishToMavenLocal`로 로컬 Maven 저장소에 플러그인 마커와 JAR을 게시할 수 있습니다. 사내 Maven 게시 저장소는 조직의 설정을 추가해야 합니다. 분석 라이브러리는 Gradle 의존성으로 다운로드·캐시하며 JAR에 합쳐 넣지 않습니다.
 
@@ -97,7 +110,7 @@ rules:
 | `suggestion` | 해결 방향. 쿼리 검사기는 계산한 후보 코드를 뒤에 붙임 |
 | `exclude-path-patterns` | 입력 경로에 대한 정규식. 파싱 전에 제외 |
 
-선언 종류·API·쿼리를 해석하는 로직은 Groovy 검사기에 있고, 적용 범위·이름·허용 대상·심각도·설명은 YAML로 바꿉니다. 새로운 쿼리 문법이나 분석 종류를 추가하려면 JVM 검사기와 테스트를 함께 추가해야 합니다.
+선언 종류·API·쿼리를 해석하는 로직은 Kotlin 검사기에 있고, 적용 범위·이름·허용 대상·심각도·설명은 YAML로 바꿉니다. 새로운 쿼리 문법이나 분석 종류를 추가하려면 JVM 검사기와 테스트를 함께 추가해야 합니다.
 
 ## 제공한 규칙
 
@@ -214,13 +227,13 @@ SKIP은 수정 제안을 포함하지 않습니다. 진단이 없다고 전체 �
 
 - `tests/fixtures/<case>/Example.kt`, 필요한 경우 `Model.kt`: 실제 Kotlin 입력.
 - `tests/fixtures/<case>/expected.json`: 기대 rule·code·severity·status·후보 문자열.
-- `gradle-plugin/src/test/groovy/.../AcceptanceTest.groovy`: 기존 67개 Kotlin 사례를 변경 없이 실행.
-- `QueryShapeTest.groovy`: 쿼리 문법과 변환 8개 테스트.
-- `RobustnessTest.groovy`: 설정·파싱·정렬·Unicode 위치·변수 가림 등 16개 테스트.
-- `GradleTaskTest.groovy`: TestKit으로 실제 Groovy/Kotlin DSL 소비 프로젝트, 성공·경고·실패, Configuration Cache, UP-TO-DATE, 입력 변경, 빈 입력과 오래된 리포트 제거 확인.
+- `gradle-plugin/src/test/kotlin/.../AcceptanceTest.kt`: 기존 67개 Kotlin 사례를 변경 없이 실행.
+- `QueryShapeTest.kt`: 쿼리 문법과 변환 8개 테스트.
+- `RobustnessTest.kt`: 설정·파싱·정렬·Unicode 위치·변수 가림 등 17개 테스트.
+- `GradleTaskTest.kt`: TestKit으로 실제 Groovy/Kotlin DSL 소비 프로젝트, 성공·경고·실패, Configuration Cache, UP-TO-DATE, 입력 변경, 빈 입력과 오래된 리포트 제거 확인.
 - `TEST-MATRIX.md`: 소스 사례별 기대 결과.
 
-총 100개 테스트(67 + 8 + 16 + TestKit 9개)가 **Kotlin 원문 → PSI → 소스 인덱스·규칙 → 진단** 경로와 Gradle 실행을 검증합니다. 실제 Spring 컨텍스트와 DB를 실행하지는 않습니다.
+총 102개 테스트(67 + 8 + 17 + TestKit 10개)가 **Kotlin 원문 → PSI → 소스 인덱스·규칙 → 진단** 경로와 Gradle 실행을 검증합니다. 실제 Spring 컨텍스트와 DB를 실행하지는 않습니다.
 
 CI는 JDK를 준비한 뒤 `scripts/verify-gradle.py`로 테스트·플러그인 검증·정상·경고·오류 데모를 확인합니다. 성공하면 공통 JAR과 테스트·진단 리포트를 artifact로 제공합니다. Rust 빌드나 플랫폼별 바이너리 패키징 단계는 없습니다.
 
@@ -238,7 +251,7 @@ CI는 JDK를 준비한 뒤 `scripts/verify-gradle.py`로 테스트·플러그인
 - 기존 NAME/CQ/AUTH/JPA 규칙의 제한된 판정 범위를 유지합니다.
 - 일반 함수의 반환 타입 추론, 외부 JAR의 타입 계층, 전체 호출 그래프·데이터 흐름, Spring FilterChain 등록, DB 쿼리 결과 동등성은 검증하지 않습니다.
 - 쿼리 제안은 자동 수정이 아닙니다. 알려진 복잡한 매핑은 보수적으로 SKIP합니다.
-- 새로운 분석 종류는 Groovy 검사기와 테스트를 함께 추가해야 합니다. 기존 종류의 범위·패턴·심각도·허용 API는 YAML로 변경합니다.
+- 새로운 분석 종류는 Kotlin 검사기와 테스트를 함께 추가해야 합니다. 기존 종류의 범위·패턴·심각도·허용 API는 YAML로 변경합니다.
 
 ## 공식 자료
 

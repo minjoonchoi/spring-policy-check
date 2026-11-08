@@ -27,6 +27,7 @@ replay_pid*
 /target/
 build/
 .gradle/
+.kotlin/
 /dist/
 /bin/
 __pycache__/

@@ -35,7 +35,7 @@ GPL·AGPL·LGPL·MPL도 상업적 사용 자체가 금지된다는 뜻은 아닙
 
 ## 현재 구현의 의존성
 
-v0.2는 Gradle JVM 안에서 실행하는 Groovy task입니다. Kotlin compiler embeddable 2.2.21의 PSI API와 SnakeYAML 2.3을 사용하며, 8개의 외부 runtime artifact와 테스트용 JUnit/Hamcrest를 기록했습니다. Gradle API와 Groovy는 호스트 Gradle이 제공합니다.
+v0.2는 Gradle JVM 안에서 실행하는 Kotlin task입니다. Kotlin compiler embeddable 2.2.21의 PSI API와 SnakeYAML 2.3을 사용하며, 8개의 외부 runtime artifact와 테스트용 JUnit/Hamcrest를 기록했습니다. Gradle API, 플러그인 실행용 Kotlin 표준 라이브러리와 JSON 처리용 Groovy는 호스트 Gradle이 제공합니다. Kotlin Gradle Plugin 2.2.21과 그 빌드 의존성은 플러그인 구현을 컴파일할 때만 사용하며 제품 JAR에는 포함하지 않습니다.
 
 Kotlin 컴파일러의 최상위 Apache-2.0 표기만으로 검토를 끝내지 않습니다. 실제 JAR의 GWT/Rhino 클래스(NPL-1.1)와 그 밖의 내장 코드 고지를 확인하고, 해당 릴리스의 전체 라이선스 디렉터리를 보존했습니다. NPL 코드가 현재 파서 실행 경로에서 사용되지 않는다는 사실은 회사의 의존성 승인 조건을 면제하지 않습니다. 회사에서 해당 artifact를 금지한다면 Kotlin 구문 분석 의존성을 대체해야 합니다. 현재 회사 고유의 금지 목록은 제공되지 않았습니다.
 

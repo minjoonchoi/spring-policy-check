@@ -17,7 +17,8 @@
       "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-compiler-embeddable/2.2.21/kotlin-compiler-embeddable-2.2.21-sources.jar",
       "pom": "third_party/maven-poms/kotlin-compiler-embeddable-2.2.21.pom",
       "notices": "third_party/kotlin-2.2.21",
-      "embedded_license_notes": "Includes Apache-2.0, BSD notices and GWT/Rhino code under NPL-1.1. See upstream license/README.md and rhino_LICENSE.txt. Unmodified external dependency; not shaded into this plugin."
+      "embedded_license_notes": "Includes Apache-2.0, BSD notices and GWT/Rhino code under NPL-1.1. See upstream license/README.md and rhino_LICENSE.txt. Unmodified external dependency; not shaded into this plugin.",
+      "also_used_for_build": true
     },
     {
       "coordinate": "org.jetbrains.kotlin:kotlin-stdlib:2.2.21",
@@ -32,7 +33,8 @@
       "artifact_sha256": "6558a3d233da56a20934b32159f9db5f86ed5816ef098f78a2c223dc6abb79dd",
       "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/2.2.21/kotlin-stdlib-2.2.21-sources.jar",
       "pom": "third_party/maven-poms/kotlin-stdlib-2.2.21.pom",
-      "notices": "third_party/kotlin-2.2.21"
+      "notices": "third_party/kotlin-2.2.21",
+      "also_used_for_build": true
     },
     {
       "coordinate": "org.jetbrains.kotlin:kotlin-script-runtime:2.2.21",
@@ -47,7 +49,8 @@
       "artifact_sha256": "2b1519b427b514d1536c1b425674b03fe914af637924028e9959c6625442df51",
       "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-script-runtime/2.2.21/kotlin-script-runtime-2.2.21-sources.jar",
       "pom": "third_party/maven-poms/kotlin-script-runtime-2.2.21.pom",
-      "notices": "third_party/kotlin-2.2.21"
+      "notices": "third_party/kotlin-2.2.21",
+      "also_used_for_build": true
     },
     {
       "coordinate": "org.jetbrains.kotlin:kotlin-reflect:1.6.10",
@@ -62,7 +65,8 @@
       "artifact_sha256": "3277ac102ae17aad10a55abec75ff5696c8d109790396434b496e75087854203",
       "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-reflect/1.6.10/kotlin-reflect-1.6.10-sources.jar",
       "pom": "third_party/maven-poms/kotlin-reflect-1.6.10.pom",
-      "notices": "third_party/kotlin-reflect-1.6.10"
+      "notices": "third_party/kotlin-reflect-1.6.10",
+      "also_used_for_build": true
     },
     {
       "coordinate": "org.jetbrains.kotlin:kotlin-daemon-embeddable:2.2.21",
@@ -77,7 +81,8 @@
       "artifact_sha256": "91c0673c22e44b054ae0314d323860ebe1f3aff3f0ebc74fff82c4733dde09be",
       "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-daemon-embeddable/2.2.21/kotlin-daemon-embeddable-2.2.21-sources.jar",
       "pom": "third_party/maven-poms/kotlin-daemon-embeddable-2.2.21.pom",
-      "notices": "third_party/kotlin-2.2.21"
+      "notices": "third_party/kotlin-2.2.21",
+      "also_used_for_build": true
     },
     {
       "coordinate": "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.8.0",
@@ -92,7 +97,8 @@
       "artifact_sha256": "9860906a1937490bf5f3b06d2f0e10ef451e65b95b269f22daf68a3d1f5065c5",
       "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.8.0/kotlinx-coroutines-core-jvm-1.8.0-sources.jar",
       "pom": "third_party/maven-poms/kotlinx-coroutines-core-jvm-1.8.0.pom",
-      "notices": "third_party/kotlinx-coroutines-1.8.0"
+      "notices": "third_party/kotlinx-coroutines-1.8.0",
+      "also_used_for_build": true
     },
     {
       "coordinate": "org.jetbrains:annotations:13.0",
@@ -107,7 +113,8 @@
       "artifact_sha256": "ace2a10dc8e2d5fd34925ecac03e4988b2c0f851650c94b8cef49ba1bd111478",
       "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/annotations/13.0/annotations-13.0-sources.jar",
       "pom": "third_party/maven-poms/annotations-13.0.pom",
-      "notices": "third_party/annotations-13.0"
+      "notices": "third_party/annotations-13.0",
+      "also_used_for_build": true
     },
     {
       "coordinate": "org.yaml:snakeyaml:2.3",
@@ -122,7 +129,8 @@
       "artifact_sha256": "63a76fe66b652360bd4c2c107e6f0258daa7d4bb492008ba8c26fcd230ff9146",
       "sources_url": "https://repo.maven.apache.org/maven2/org/yaml/snakeyaml/2.3/snakeyaml-2.3-sources.jar",
       "pom": "third_party/maven-poms/snakeyaml-2.3.pom",
-      "notices": "third_party/snakeyaml-2.3"
+      "notices": "third_party/snakeyaml-2.3",
+      "also_used_for_build": false
     },
     {
       "coordinate": "junit:junit:4.13.2",
@@ -149,6 +157,516 @@
       "pom": "third_party/maven-poms/hamcrest-core-1.3.pom",
       "notices": "third_party/hamcrest-core-1.3",
       "artifact_license": "BSD-3-Clause; LICENSE.txt inside JAR"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:abi-tools-api:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/abi-tools-api/2.2.21/abi-tools-api-2.2.21.jar",
+      "artifact_sha256": "239901f317c189b4b4cc8bc5e966943dc19e39259539e668baa5d7ef18eb916a",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/abi-tools-api/2.2.21/abi-tools-api-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/abi-tools-api-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:fus-statistics-gradle-plugin:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/fus-statistics-gradle-plugin/2.2.21/fus-statistics-gradle-plugin-2.2.21-gradle88.jar",
+      "artifact_sha256": "27dcf4aeaa5bbb64d861bd29ed60d482f0ffd96244c81e2426b9dac5e7fdc63f",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/fus-statistics-gradle-plugin/2.2.21/fus-statistics-gradle-plugin-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/fus-statistics-gradle-plugin-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-build-statistics:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-build-statistics/2.2.21/kotlin-build-statistics-2.2.21.jar",
+      "artifact_sha256": "8dfdfb2b8f67fcdcc4cee3ef90a25af467ca295853b0ea019d0010acebd6f18a",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-build-statistics/2.2.21/kotlin-build-statistics-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-build-statistics-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-build-tools-api:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-build-tools-api/2.2.21/kotlin-build-tools-api-2.2.21.jar",
+      "artifact_sha256": "31645ca52239b221ebd060a00fff8d8516ffdc88bbd9f4e4cd7ddb41a7068c70",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-build-tools-api/2.2.21/kotlin-build-tools-api-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-build-tools-api-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-build-tools-impl:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-build-tools-impl/2.2.21/kotlin-build-tools-impl-2.2.21.jar",
+      "artifact_sha256": "458b63ef8fc50a0a3180fe688ec1b995745992a05c495dac61e58d1088927a80",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-build-tools-impl/2.2.21/kotlin-build-tools-impl-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-build-tools-impl-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-compiler-runner:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-compiler-runner/2.2.21/kotlin-compiler-runner-2.2.21.jar",
+      "artifact_sha256": "a3a422e06bcd35a32a798d191ef6ebb35ea6b39c3553e941d39c01e631fc5c77",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-compiler-runner/2.2.21/kotlin-compiler-runner-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-compiler-runner-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-daemon-client:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-daemon-client/2.2.21/kotlin-daemon-client-2.2.21.jar",
+      "artifact_sha256": "3ce2ca3c5d7bc7c87c4149ac2c593d21a791d6776229ae123db645a3017de814",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-daemon-client/2.2.21/kotlin-daemon-client-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-daemon-client-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-gradle-plugin/2.2.21/kotlin-gradle-plugin-2.2.21-gradle88.jar",
+      "artifact_sha256": "7fd99a22e2be8246754d2fc46c86c4c650b29366a2cfad860c772526cbe1061f",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-gradle-plugin/2.2.21/kotlin-gradle-plugin-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-gradle-plugin-2.2.21.pom",
+      "notices": [
+        "third_party/kotlin-2.2.21",
+        "third_party/kotlin-gradle-plugin-2.2.21"
+      ],
+      "embedded_license_notes": "Build-only Gradle 8.8 variant. Embedded components are recorded in kotlin_gradle_plugin_embedded; not included in the spring-policy plugin JAR."
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-gradle-plugin-annotations:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-gradle-plugin-annotations/2.2.21/kotlin-gradle-plugin-annotations-2.2.21.jar",
+      "artifact_sha256": "3594c40c7005d044952f80f704172bb6fd1844241025194fb16bee6d45da2e5b",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-gradle-plugin-annotations/2.2.21/kotlin-gradle-plugin-annotations-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-gradle-plugin-annotations-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-gradle-plugin-api:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-gradle-plugin-api/2.2.21/kotlin-gradle-plugin-api-2.2.21-gradle88.jar",
+      "artifact_sha256": "b7bfd07f5f1e0a44af612eb48474df6328ee0f6f3a6a73642ce473f30645e1a5",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-gradle-plugin-api/2.2.21/kotlin-gradle-plugin-api-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-gradle-plugin-api-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21",
+      "additional_artifacts": [
+        {
+          "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-gradle-plugin-api/2.2.21/kotlin-gradle-plugin-api-2.2.21.jar",
+          "artifact_sha256": "b7bfd07f5f1e0a44af612eb48474df6328ee0f6f3a6a73642ce473f30645e1a5"
+        }
+      ]
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-gradle-plugin-idea:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-gradle-plugin-idea/2.2.21/kotlin-gradle-plugin-idea-2.2.21.jar",
+      "artifact_sha256": "ec969c5f0b099f823846232238f9bd64f3d3741e62ea9050ad2e432fad79d0a0",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-gradle-plugin-idea/2.2.21/kotlin-gradle-plugin-idea-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-gradle-plugin-idea-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-gradle-plugin-idea-proto:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-gradle-plugin-idea-proto/2.2.21/kotlin-gradle-plugin-idea-proto-2.2.21.jar",
+      "artifact_sha256": "4b4be774efb9585af0fda180d33903d8272e497df7b81bb091fa9339ecda45bd",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-gradle-plugin-idea-proto/2.2.21/kotlin-gradle-plugin-idea-proto-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-gradle-plugin-idea-proto-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-gradle-plugin-model:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-gradle-plugin-model/2.2.21/kotlin-gradle-plugin-model-2.2.21.jar",
+      "artifact_sha256": "908e6e5c890bb49dbc9266dccf28bdb0c258c48647039aed702fe9d586640186",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-gradle-plugin-model/2.2.21/kotlin-gradle-plugin-model-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-gradle-plugin-model-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-klib-commonizer-api:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-klib-commonizer-api/2.2.21/kotlin-klib-commonizer-api-2.2.21.jar",
+      "artifact_sha256": "58bc451ce62ed6befd077ac107ea5f133443e74dd78cf3a4a48f868e61837e8b",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-klib-commonizer-api/2.2.21/kotlin-klib-commonizer-api-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-klib-commonizer-api-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-native-utils:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-native-utils/2.2.21/kotlin-native-utils-2.2.21.jar",
+      "artifact_sha256": "e74b14406dae0a02388187c62c1731183ba7d0d8e60675682de511a90afa6c56",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-native-utils/2.2.21/kotlin-native-utils-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-native-utils-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-scripting-common:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-common/2.2.21/kotlin-scripting-common-2.2.21.jar",
+      "artifact_sha256": "414ed91c3f5e4492b23cb9537842b4651038e25dad84107939f434c2203f2a92",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-common/2.2.21/kotlin-scripting-common-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-scripting-common-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-compiler-embeddable/2.2.21/kotlin-scripting-compiler-embeddable-2.2.21.jar",
+      "artifact_sha256": "d934b9d0c246bc09624b7068af58ad57cef11dbe2addbc7b19d250cce42de1c9",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-compiler-embeddable/2.2.21/kotlin-scripting-compiler-embeddable-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-scripting-compiler-embeddable-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-scripting-compiler-impl-embeddable:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-compiler-impl-embeddable/2.2.21/kotlin-scripting-compiler-impl-embeddable-2.2.21.jar",
+      "artifact_sha256": "788a3060c8e7997f8ae16ba5c0280d05005af0a42029f18cb10c5625b979fac3",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-compiler-impl-embeddable/2.2.21/kotlin-scripting-compiler-impl-embeddable-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-scripting-compiler-impl-embeddable-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-scripting-jvm:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-jvm/2.2.21/kotlin-scripting-jvm-2.2.21.jar",
+      "artifact_sha256": "83820c5fcc5d28f045f914ecd5900bbbcf8115b0d7007334de069fe6c70669e6",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-scripting-jvm/2.2.21/kotlin-scripting-jvm-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-scripting-jvm-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-tooling-core:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-tooling-core/2.2.21/kotlin-tooling-core-2.2.21.jar",
+      "artifact_sha256": "74014ec4f3ef78ce7da7e3e6964f2c526a3121d5c58fef8ca2979e5f344582f4",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-tooling-core/2.2.21/kotlin-tooling-core-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-tooling-core-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-util-io:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-util-io/2.2.21/kotlin-util-io-2.2.21.jar",
+      "artifact_sha256": "266aa4026a106f59fcefc3f151768870af91cef15e4011fac0aa1f1f567d49f4",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-util-io/2.2.21/kotlin-util-io-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-util-io-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-util-klib:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-util-klib/2.2.21/kotlin-util-klib-2.2.21.jar",
+      "artifact_sha256": "55400a917e6b984a6197eae78b5b52edbdf2cd6e0a7c3843f7954481bafb243f",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-util-klib/2.2.21/kotlin-util-klib-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-util-klib-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-util-klib-metadata:2.2.21",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-util-klib-metadata/2.2.21/kotlin-util-klib-metadata-2.2.21.jar",
+      "artifact_sha256": "022b95a3dfed949d7c2e47820bcd9836ee057b721513f773361e4333f6c76f8c",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-util-klib-metadata/2.2.21/kotlin-util-klib-metadata-2.2.21-sources.jar",
+      "pom": "third_party/maven-poms/kotlin-util-klib-metadata-2.2.21.pom",
+      "notices": "third_party/kotlin-2.2.21"
+    },
+    {
+      "coordinate": "com.google.code.gson:gson:2.11.0",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache-2.0",
+          "url": "https://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar",
+      "artifact_sha256": "57928d6e5a6edeb2abd3770a8f95ba44dce45f3b23b7a9dc2b309c581552a78b",
+      "sources_url": "https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.11.0/gson-2.11.0-sources.jar",
+      "pom": "third_party/maven-poms/gson-2.11.0.pom",
+      "notices": "third_party/gson-2.11.0",
+      "reviewed_license": "Apache-2.0",
+      "notice_source": "https://github.com/google/gson/blob/gson-parent-2.11.0/LICENSE"
+    },
+    {
+      "coordinate": "com.google.errorprone:error_prone_annotations:2.27.0",
+      "scope": "build",
+      "declared_licenses": [
+        {
+          "name": "Apache 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.27.0/error_prone_annotations-2.27.0.jar",
+      "artifact_sha256": "24c923372c58e35d0b9f16a028929bb9aedc77521867c274f2bd0735df5ba1f5",
+      "sources_url": "https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.27.0/error_prone_annotations-2.27.0-sources.jar",
+      "pom": "third_party/maven-poms/error_prone_annotations-2.27.0.pom",
+      "notices": "third_party/error_prone_annotations-2.27.0",
+      "reviewed_license": "Apache-2.0",
+      "notice_source": "https://github.com/google/error-prone/blob/v2.27.0/COPYING"
+    },
+    {
+      "coordinate": "com.google.guava:guava:33.3.1-jre",
+      "scope": "embedded-build-tool",
+      "declared_licenses": [],
+      "artifact_url": "https://repo.maven.apache.org/maven2/com/google/guava/guava/33.3.1-jre/guava-33.3.1-jre.jar",
+      "artifact_sha256": "4bf0e2c5af8e4525c96e8fde17a4f7307f97f8478f11c4c8e35a0e3298ae4e90",
+      "sources_url": "https://repo.maven.apache.org/maven2/com/google/guava/guava/33.3.1-jre/guava-33.3.1-jre-sources.jar",
+      "pom": "third_party/maven-poms/guava-33.3.1-jre.pom",
+      "notices": "third_party/guava-33.3.1-jre",
+      "reviewed_license": "Apache-2.0"
+    },
+    {
+      "coordinate": "com.google.guava:failureaccess:1.0.2",
+      "scope": "embedded-build-tool",
+      "declared_licenses": [],
+      "artifact_url": "https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2.jar",
+      "artifact_sha256": "8a8f81cf9b359e3f6dfa691a1e776985c061ef2f223c9b2c80753e1b458e8064",
+      "sources_url": "https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.2/failureaccess-1.0.2-sources.jar",
+      "pom": "third_party/maven-poms/failureaccess-1.0.2.pom",
+      "notices": "third_party/failureaccess-1.0.2",
+      "reviewed_license": "Apache-2.0",
+      "notice_source": "Apache license text from Guava v33.0.0; original copyright header from failureaccess-1.0.2-sources.jar."
+    },
+    {
+      "coordinate": "commons-codec:commons-codec:1.17.1",
+      "scope": "embedded-build-tool",
+      "declared_licenses": [],
+      "artifact_url": "https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.17.1/commons-codec-1.17.1.jar",
+      "artifact_sha256": "f9f6cb103f2ddc3c99a9d80ada2ae7bf0685111fd6bffccb72033d1da4e6ff23",
+      "sources_url": "https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.17.1/commons-codec-1.17.1-sources.jar",
+      "pom": "third_party/maven-poms/commons-codec-1.17.1.pom",
+      "notices": "third_party/commons-codec-1.17.1",
+      "reviewed_license": "Apache-2.0"
+    },
+    {
+      "coordinate": "commons-io:commons-io:2.18.0",
+      "scope": "embedded-build-tool",
+      "declared_licenses": [],
+      "artifact_url": "https://repo.maven.apache.org/maven2/commons-io/commons-io/2.18.0/commons-io-2.18.0.jar",
+      "artifact_sha256": "f3ca0f8d63c40e23a56d54101c60d5edee136b42d84bfb85bc7963093109cf8b",
+      "sources_url": "https://repo.maven.apache.org/maven2/commons-io/commons-io/2.18.0/commons-io-2.18.0-sources.jar",
+      "pom": "third_party/maven-poms/commons-io-2.18.0.pom",
+      "notices": "third_party/commons-io-2.18.0",
+      "reviewed_license": "Apache-2.0"
+    },
+    {
+      "coordinate": "org.apache.commons:commons-compress:1.27.1",
+      "scope": "embedded-build-tool",
+      "declared_licenses": [],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.27.1/commons-compress-1.27.1.jar",
+      "artifact_sha256": "293d80f54b536b74095dcd7ea3cf0a29bbfc3402519281332495f4420d370d16",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-compress/1.27.1/commons-compress-1.27.1-sources.jar",
+      "pom": "third_party/maven-poms/commons-compress-1.27.1.pom",
+      "notices": "third_party/commons-compress-1.27.1",
+      "reviewed_license": "Apache-2.0"
+    },
+    {
+      "coordinate": "org.apache.commons:commons-lang3:3.16.0",
+      "scope": "embedded-build-tool",
+      "declared_licenses": [],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.16.0/commons-lang3-3.16.0.jar",
+      "artifact_sha256": "08709dd74d602b705ce4017d26544210056a4ba583d5b20c09373406fe7a00f8",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/apache/commons/commons-lang3/3.16.0/commons-lang3-3.16.0-sources.jar",
+      "pom": "third_party/maven-poms/commons-lang3-3.16.0.pom",
+      "notices": "third_party/commons-lang3-3.16.0",
+      "reviewed_license": "Apache-2.0"
+    },
+    {
+      "coordinate": "com.github.gundy:semver4j:0.16.4",
+      "scope": "embedded-build-tool",
+      "declared_licenses": [
+        {
+          "name": "MIT License",
+          "url": "http://www.opensource.org/licenses/mit-license.php"
+        }
+      ],
+      "artifact_url": "https://repo.maven.apache.org/maven2/com/github/gundy/semver4j/0.16.4/semver4j-0.16.4-nodeps.jar",
+      "artifact_sha256": "3f59eca516374ccd4fd3551625bf50f8a4b191f700508f7ce4866460a6128af0",
+      "sources_url": "https://repo.maven.apache.org/maven2/com/github/gundy/semver4j/0.16.4/semver4j-0.16.4-sources.jar",
+      "pom": "third_party/maven-poms/semver4j-0.16.4.pom",
+      "notices": "third_party/semver4j-0.16.4",
+      "reviewed_license": "MIT",
+      "notice_source": "https://raw.githubusercontent.com/gundy/semver4j/0.16.4/LICENSE.md"
+    },
+    {
+      "coordinate": "org.antlr:antlr4-runtime:4.5.2-1",
+      "scope": "embedded-build-tool",
+      "declared_licenses": [],
+      "artifact_url": "https://repo.maven.apache.org/maven2/org/antlr/antlr4-runtime/4.5.2-1/antlr4-runtime-4.5.2-1.jar",
+      "artifact_sha256": "e831413004bceed7d915c3a175927b1daabc4974b7b8a6f87bbce886d3550398",
+      "sources_url": "https://repo.maven.apache.org/maven2/org/antlr/antlr4-runtime/4.5.2-1/antlr4-runtime-4.5.2-1-sources.jar",
+      "pom": "third_party/maven-poms/antlr4-runtime-4.5.2-1.pom",
+      "notices": "third_party/antlr4-runtime-4.5.2-1",
+      "reviewed_license": "BSD-3-Clause",
+      "parent_pom": "third_party/maven-poms/antlr4-master-4.5.2-1.pom",
+      "notice_source": "Original license headers from the exact sources JAR."
+    },
+    {
+      "coordinate": "com.google.protobuf:protobuf-java:4.28.2",
+      "scope": "embedded-build-tool",
+      "declared_licenses": [],
+      "artifact_url": "https://repo.maven.apache.org/maven2/com/google/protobuf/protobuf-java/4.28.2/protobuf-java-4.28.2.jar",
+      "artifact_sha256": "707bccf406f4fc61b841d4700daa8d3e84db8ab499ef3481a060fa6a0f06e627",
+      "sources_url": "https://repo.maven.apache.org/maven2/com/google/protobuf/protobuf-java/4.28.2/protobuf-java-4.28.2-sources.jar",
+      "pom": "third_party/maven-poms/protobuf-java-4.28.2.pom",
+      "notices": "third_party/protobuf-4.28.2",
+      "reviewed_license": "BSD-3-Clause",
+      "notice_source": "https://github.com/protocolbuffers/protobuf/blob/v28.2/LICENSE"
+    },
+    {
+      "coordinate": "com.google.protobuf:protobuf-kotlin:4.28.2",
+      "scope": "embedded-build-tool",
+      "declared_licenses": [],
+      "artifact_url": "https://repo.maven.apache.org/maven2/com/google/protobuf/protobuf-kotlin/4.28.2/protobuf-kotlin-4.28.2.jar",
+      "artifact_sha256": "51bed64b78922c5717d463c0ef71a41cfebe580ec1163b2af4509a71bf8209a2",
+      "sources_url": "https://repo.maven.apache.org/maven2/com/google/protobuf/protobuf-kotlin/4.28.2/protobuf-kotlin-4.28.2-sources.jar",
+      "pom": "third_party/maven-poms/protobuf-kotlin-4.28.2.pom",
+      "notices": "third_party/protobuf-4.28.2",
+      "reviewed_license": "BSD-3-Clause",
+      "notice_source": "https://github.com/protocolbuffers/protobuf/blob/v28.2/LICENSE"
     }
   ],
   "upstream_kotlin_notice_archive": {
@@ -156,5 +674,10 @@
     "sha256": "a623871f1cd9c938946948b70ef9170879f0758043885bbd30c32f024e511714",
     "subtree": "kotlinc/license/",
     "note": "Full upstream snapshot includes notices for tools and testdata not all present in the JVM parser path."
+  },
+  "kotlin_gradle_plugin_embedded": {
+    "source": "https://github.com/JetBrains/kotlin/blob/v2.2.21/libraries/tools/kotlin-gradle-plugin/build.gradle.kts",
+    "version_catalog": "https://github.com/JetBrains/kotlin/blob/v2.2.21/gradle/libs.versions.toml",
+    "notes": "Exact embedded Maven versions read from the gradle88 JAR META-INF/maven pom.properties; protobuf 4.28.2 from the version catalog and kotlin-gradle-plugin-idea-proto build. ASM 9.6.1 and TeamCity service messages use retained upstream Kotlin notices. Build-tool artifacts are unmodified, separate and not bundled into our plugin."
   }
 }
