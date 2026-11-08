@@ -55,7 +55,6 @@ The selected column records the reviewed alternative for OR expressions; all AND
 | --- | --- | --- | --- |
 | gradle-wrapper 8.10.2 | source repository; build tool, not bundled in native archive | Apache-2.0 | [LICENSE](third_party/gradle-wrapper-8.10.2/LICENSE) |
 | rust-standard-library 1.99.1 | linked runtime; Linux x86_64 GNU release only | MIT, Apache-2.0 WITH LLVM-exception, BSD-2-Clause, Unicode-3.0, Zlib | [LICENSE-MIT](third_party/rust-1.99.1/LICENSE-MIT), [COPYRIGHT-library.html](third_party/rust-1.99.1/COPYRIGHT-library.html) |
-| cargo-deny 0.20.2 | CI/developer tool; not bundled | MIT | [LICENSE-MIT](third_party/cargo-deny-0.20.2/LICENSE-MIT) |
 | actions/checkout 11d5960a326750d5838078e36cf38b85af677262 | CI orchestration; not bundled | MIT | [LICENSE](third_party/actions-checkout/LICENSE) |
 | actions/setup-java cf277c60eb25467037889841efdb72551f06f6c3 | CI orchestration; not bundled | MIT | [LICENSE](third_party/actions-setup-java/LICENSE) |
 | actions/upload-artifact ea165f8d65b6e75b540449e92b4886f43607fa02 | CI orchestration; not bundled | MIT | [LICENSE](third_party/actions-upload-artifact/LICENSE) |

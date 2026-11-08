@@ -69,28 +69,6 @@
       "review_notes": "Original multi-target notice snapshot. fortanix-sgx-abi (MPL-2.0) is SGX-only, not Linux GNU. r-efi offers MIT/Apache alternatives and is UEFI-only. No approval for additional release targets."
     },
     {
-      "id": "cargo-deny",
-      "version": "0.20.2",
-      "scope": "CI/developer tool; not bundled",
-      "licenses": [
-        "MIT"
-      ],
-      "notice_files": [
-        {
-          "path": "third_party/cargo-deny-0.20.2/LICENSE-MIT",
-          "sha256": "090a294a492ab2f41388252312a65cf2f0e423330b721a68c6665ac64766753b",
-          "source": "https://github.com/EmbarkStudios/cargo-deny/blob/0.20.2/LICENSE-MIT"
-        }
-      ],
-      "checked_files": [
-        {
-          "path": ".github/install-cargo-deny.sh",
-          "sha256": "a1ab2ac38088401e849a27908c1b326f8394a8becc6d75af1bd9811c4bd80901"
-        }
-      ],
-      "release_archive_sha256": "9f12ed4c49936e09b48bf862b595cde2fe64fcbd9d74dfacac6131ca824c8d5f"
-    },
-    {
       "id": "actions/checkout",
       "version": "11d5960a326750d5838078e36cf38b85af677262",
       "scope": "CI orchestration; not bundled",
